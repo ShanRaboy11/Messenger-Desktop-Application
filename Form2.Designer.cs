@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             panel5 = new Panel();
             panel2 = new Panel();
+            lblNotFound = new Label();
             lblSearch = new Label();
             tbxSUser = new TextBox();
             label2 = new Label();
@@ -41,7 +42,12 @@
             logoutToolStripMenuItem1 = new ToolStripMenuItem();
             exitToolStripMenuItem1 = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
-            panel3 = new Panel();
+            pnlUserProfile = new Panel();
+            pbProfilePic = new PictureBox();
+            contextUser = new ContextMenuStrip(components);
+            addFriendToolStripMenuItem = new ToolStripMenuItem();
+            messageToolStripMenuItem = new ToolStripMenuItem();
+            lblFullName = new Label();
             label1 = new Label();
             richTextBoxEdit1 = new ReaLTaiizor.Controls.RichTextBoxEdit();
             panel1 = new Panel();
@@ -57,13 +63,40 @@
             closeToolStripMenuItem1 = new ToolStripMenuItem();
             maximizeToolStripMenuItem1 = new ToolStripMenuItem();
             minimizeToolStripMenuItem1 = new ToolStripMenuItem();
+            menuStrip1 = new MenuStrip();
+            profileToolStripMenuItem = new ToolStripMenuItem();
+            logoutToolStripMenuItem2 = new ToolStripMenuItem();
+            notificationsToolStripMenuItem = new ToolStripMenuItem();
+            friendsToolStripMenuItem = new ToolStripMenuItem();
+            pbMessagePic = new PictureBox();
+            lblUserMessage = new Label();
+            separator1 = new ReaLTaiizor.Controls.Separator();
+            separator2 = new ReaLTaiizor.Controls.Separator();
+            label3 = new Label();
+            textBox1 = new TextBox();
+            richTextBoxEdit2 = new ReaLTaiizor.Controls.RichTextBoxEdit();
+            pictureBox4 = new PictureBox();
+            pictureBox5 = new PictureBox();
+            pictureBox6 = new PictureBox();
+            pictureBox7 = new PictureBox();
+            pictureBox8 = new PictureBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             contextOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pnlUserProfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbProfilePic).BeginInit();
+            contextUser.SuspendLayout();
             panel1.SuspendLayout();
             contextForm2.SuspendLayout();
+            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbMessagePic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             SuspendLayout();
             // 
             // panel5
@@ -77,13 +110,14 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(lblNotFound);
             panel2.Controls.Add(lblSearch);
             panel2.Controls.Add(tbxSUser);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(pictureBox3);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(panel3);
+            panel2.Controls.Add(pnlUserProfile);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(richTextBoxEdit1);
             panel2.Location = new Point(-8, -3);
@@ -91,6 +125,17 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(303, 765);
             panel2.TabIndex = 5;
+            // 
+            // lblNotFound
+            // 
+            lblNotFound.AutoSize = true;
+            lblNotFound.Font = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            lblNotFound.Location = new Point(97, 381);
+            lblNotFound.Name = "lblNotFound";
+            lblNotFound.Size = new Size(103, 17);
+            lblNotFound.TabIndex = 9;
+            lblNotFound.Text = "User not found";
+            lblNotFound.Visible = false;
             // 
             // lblSearch
             // 
@@ -103,6 +148,7 @@
             lblSearch.Size = new Size(120, 16);
             lblSearch.TabIndex = 27;
             lblSearch.Text = "Search Messenger";
+            lblSearch.Click += tbxSearch;
             // 
             // tbxSUser
             // 
@@ -114,13 +160,14 @@
             tbxSUser.Name = "tbxSUser";
             tbxSUser.Size = new Size(206, 17);
             tbxSUser.TabIndex = 42;
-            tbxSUser.Click += searchUser;
+            tbxSUser.Click += tbxSearch;
+            tbxSUser.Enter += searchUser;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Helvetica Neue", 13F, FontStyle.Bold);
-            label2.Location = new Point(29, 143);
+            label2.Location = new Point(15, 143);
             label2.Name = "label2";
             label2.Size = new Size(57, 20);
             label2.TabIndex = 13;
@@ -128,6 +175,7 @@
             // 
             // pictureBox3
             // 
+            pictureBox3.Cursor = Cursors.Hand;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
             pictureBox3.Location = new Point(39, 103);
             pictureBox3.Name = "pictureBox3";
@@ -135,6 +183,7 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox3.TabIndex = 10;
             pictureBox3.TabStop = false;
+            pictureBox3.Click += searchUser;
             // 
             // pictureBox2
             // 
@@ -161,6 +210,7 @@
             logoutToolStripMenuItem1.Name = "logoutToolStripMenuItem1";
             logoutToolStripMenuItem1.Size = new Size(113, 22);
             logoutToolStripMenuItem1.Text = "Logout";
+            logoutToolStripMenuItem1.Click += userLogout;
             // 
             // exitToolStripMenuItem1
             // 
@@ -169,6 +219,7 @@
             exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
             exitToolStripMenuItem1.Size = new Size(113, 22);
             exitToolStripMenuItem1.Text = "Exit";
+            exitToolStripMenuItem1.Click += Close;
             // 
             // pictureBox1
             // 
@@ -181,12 +232,57 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // panel3
+            // pnlUserProfile
             // 
-            panel3.Location = new Point(13, 172);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(288, 75);
-            panel3.TabIndex = 7;
+            pnlUserProfile.Controls.Add(pbProfilePic);
+            pnlUserProfile.Controls.Add(lblFullName);
+            pnlUserProfile.Location = new Point(7, 172);
+            pnlUserProfile.Name = "pnlUserProfile";
+            pnlUserProfile.Size = new Size(294, 75);
+            pnlUserProfile.TabIndex = 7;
+            // 
+            // pbProfilePic
+            // 
+            pbProfilePic.ContextMenuStrip = contextUser;
+            pbProfilePic.Location = new Point(32, 12);
+            pbProfilePic.Name = "pbProfilePic";
+            pbProfilePic.Size = new Size(57, 50);
+            pbProfilePic.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbProfilePic.TabIndex = 8;
+            pbProfilePic.TabStop = false;
+            pbProfilePic.Click += userMessage;
+            // 
+            // contextUser
+            // 
+            contextUser.Items.AddRange(new ToolStripItem[] { addFriendToolStripMenuItem, messageToolStripMenuItem });
+            contextUser.Name = "contextUser";
+            contextUser.Size = new Size(131, 48);
+            // 
+            // addFriendToolStripMenuItem
+            // 
+            addFriendToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            addFriendToolStripMenuItem.Image = (Image)resources.GetObject("addFriendToolStripMenuItem.Image");
+            addFriendToolStripMenuItem.Name = "addFriendToolStripMenuItem";
+            addFriendToolStripMenuItem.Size = new Size(130, 22);
+            addFriendToolStripMenuItem.Text = "Add friend";
+            // 
+            // messageToolStripMenuItem
+            // 
+            messageToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            messageToolStripMenuItem.Image = (Image)resources.GetObject("messageToolStripMenuItem.Image");
+            messageToolStripMenuItem.Name = "messageToolStripMenuItem";
+            messageToolStripMenuItem.Size = new Size(130, 22);
+            messageToolStripMenuItem.Text = "Message";
+            messageToolStripMenuItem.Click += userMessage;
+            // 
+            // lblFullName
+            // 
+            lblFullName.AutoSize = true;
+            lblFullName.Font = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            lblFullName.Location = new Point(105, 27);
+            lblFullName.Name = "lblFullName";
+            lblFullName.Size = new Size(0, 17);
+            lblFullName.TabIndex = 0;
             // 
             // label1
             // 
@@ -337,6 +433,7 @@
             closeToolStripMenuItem1.Name = "closeToolStripMenuItem1";
             closeToolStripMenuItem1.Size = new Size(126, 22);
             closeToolStripMenuItem1.Text = "Close";
+            closeToolStripMenuItem1.Click += Close;
             // 
             // maximizeToolStripMenuItem1
             // 
@@ -345,6 +442,7 @@
             maximizeToolStripMenuItem1.Name = "maximizeToolStripMenuItem1";
             maximizeToolStripMenuItem1.Size = new Size(126, 22);
             maximizeToolStripMenuItem1.Text = "Maximize";
+            maximizeToolStripMenuItem1.Click += Maximize;
             // 
             // minimizeToolStripMenuItem1
             // 
@@ -353,21 +451,206 @@
             minimizeToolStripMenuItem1.Name = "minimizeToolStripMenuItem1";
             minimizeToolStripMenuItem1.Size = new Size(126, 22);
             minimizeToolStripMenuItem1.Text = "Minimize";
+            minimizeToolStripMenuItem1.Click += Minimize;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.BackColor = SystemColors.ControlLight;
+            menuStrip1.Dock = DockStyle.Bottom;
+            menuStrip1.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, notificationsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 615);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1148, 24);
+            menuStrip1.TabIndex = 7;
+            menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
+            // 
+            // profileToolStripMenuItem
+            // 
+            profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem2 });
+            profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            profileToolStripMenuItem.Size = new Size(53, 20);
+            profileToolStripMenuItem.Text = "Profile";
+            // 
+            // logoutToolStripMenuItem2
+            // 
+            logoutToolStripMenuItem2.Name = "logoutToolStripMenuItem2";
+            logoutToolStripMenuItem2.Size = new Size(117, 22);
+            logoutToolStripMenuItem2.Text = "Logout";
+            logoutToolStripMenuItem2.Click += userLogout;
+            // 
+            // notificationsToolStripMenuItem
+            // 
+            notificationsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { friendsToolStripMenuItem });
+            notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
+            notificationsToolStripMenuItem.Size = new Size(87, 20);
+            notificationsToolStripMenuItem.Text = "Notifications";
+            // 
+            // friendsToolStripMenuItem
+            // 
+            friendsToolStripMenuItem.Name = "friendsToolStripMenuItem";
+            friendsToolStripMenuItem.Size = new Size(118, 22);
+            friendsToolStripMenuItem.Text = "Friends";
+            // 
+            // pbMessagePic
+            // 
+            pbMessagePic.ContextMenuStrip = contextUser;
+            pbMessagePic.Location = new Point(308, 44);
+            pbMessagePic.Name = "pbMessagePic";
+            pbMessagePic.Size = new Size(57, 50);
+            pbMessagePic.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbMessagePic.TabIndex = 9;
+            pbMessagePic.TabStop = false;
+            // 
+            // lblUserMessage
+            // 
+            lblUserMessage.AutoSize = true;
+            lblUserMessage.Font = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            lblUserMessage.Location = new Point(377, 58);
+            lblUserMessage.Name = "lblUserMessage";
+            lblUserMessage.Size = new Size(0, 17);
+            lblUserMessage.TabIndex = 9;
+            // 
+            // separator1
+            // 
+            separator1.LineColor = Color.Gray;
+            separator1.Location = new Point(286, 101);
+            separator1.Name = "separator1";
+            separator1.Size = new Size(581, 10);
+            separator1.TabIndex = 10;
+            separator1.Text = "separator1";
+            // 
+            // separator2
+            // 
+            separator2.LineColor = Color.Gray;
+            separator2.Location = new Point(286, 561);
+            separator2.Name = "separator2";
+            separator2.Size = new Size(581, 10);
+            separator2.TabIndex = 11;
+            separator2.Text = "separator2";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.White;
+            label3.Font = new Font("Helvetica Neue", 9.999999F);
+            label3.ForeColor = Color.DimGray;
+            label3.Location = new Point(420, 584);
+            label3.Name = "label3";
+            label3.Size = new Size(120, 16);
+            label3.TabIndex = 45;
+            label3.Text = "Search Messenger";
+            label3.Click += lblMessage;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.White;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Helvetica Neue", 11F);
+            textBox1.ForeColor = Color.Black;
+            textBox1.Location = new Point(422, 583);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(386, 17);
+            textBox1.TabIndex = 46;
+            textBox1.Click += lblMessage;
+            // 
+            // richTextBoxEdit2
+            // 
+            richTextBoxEdit2.AutoWordSelection = false;
+            richTextBoxEdit2.BackColor = Color.Transparent;
+            richTextBoxEdit2.BackgroundImageLayout = ImageLayout.Center;
+            richTextBoxEdit2.BaseColor = Color.Transparent;
+            richTextBoxEdit2.BorderColor = Color.FromArgb(180, 180, 180);
+            richTextBoxEdit2.EdgeColor = Color.White;
+            richTextBoxEdit2.Font = new Font("Helvetica Neue", 10.749999F);
+            richTextBoxEdit2.ForeColor = Color.DimGray;
+            richTextBoxEdit2.Location = new Point(415, 577);
+            richTextBoxEdit2.Margin = new Padding(10, 9, 10, 9);
+            richTextBoxEdit2.Name = "richTextBoxEdit2";
+            richTextBoxEdit2.ReadOnly = false;
+            richTextBoxEdit2.Size = new Size(407, 28);
+            richTextBoxEdit2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            richTextBoxEdit2.TabIndex = 44;
+            richTextBoxEdit2.TextBackColor = Color.White;
+            richTextBoxEdit2.TextBorderStyle = BorderStyle.None;
+            richTextBoxEdit2.TextFont = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            richTextBoxEdit2.WordWrap = true;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(382, 579);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(26, 24);
+            pictureBox4.TabIndex = 47;
+            pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(353, 579);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(26, 24);
+            pictureBox5.TabIndex = 48;
+            pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(324, 579);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(26, 24);
+            pictureBox6.TabIndex = 49;
+            pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
+            pictureBox7.Location = new Point(298, 580);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(22, 21);
+            pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox7.TabIndex = 50;
+            pictureBox7.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
+            pictureBox8.Location = new Point(831, 579);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(26, 24);
+            pictureBox8.TabIndex = 51;
+            pictureBox8.TabStop = false;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1148, 747);
+            ClientSize = new Size(1148, 639);
             ContextMenuStrip = contextForm2;
+            Controls.Add(pictureBox8);
+            Controls.Add(pictureBox7);
+            Controls.Add(pictureBox6);
+            Controls.Add(pictureBox5);
+            Controls.Add(pictureBox4);
+            Controls.Add(label3);
+            Controls.Add(lblUserMessage);
+            Controls.Add(textBox1);
+            Controls.Add(pbMessagePic);
+            Controls.Add(richTextBoxEdit2);
+            Controls.Add(menuStrip1);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Controls.Add(panel5);
+            Controls.Add(separator1);
+            Controls.Add(separator2);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
             Name = "Form2";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Form2";
+            Text = "Messenger";
             MouseDown += Form2_MouseDown;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -375,9 +658,22 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             contextOut.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            pnlUserProfile.ResumeLayout(false);
+            pnlUserProfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbProfilePic).EndInit();
+            contextUser.ResumeLayout(false);
             panel1.ResumeLayout(false);
             contextForm2.ResumeLayout(false);
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbMessagePic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -389,7 +685,7 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private PictureBox pictureBox1;
-        private Panel panel3;
+        private Panel pnlUserProfile;
         private Label label1;
         private ReaLTaiizor.Controls.RichTextBoxEdit richTextBoxEdit1;
         private Panel panel1;
@@ -412,6 +708,30 @@
         private ToolStripMenuItem logoutToolStripMenuItem1;
         private ToolStripMenuItem exitToolStripMenuItem1;
         private TextBox tbxSUser;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem profileToolStripMenuItem;
+        private PictureBox pbProfilePic;
+        private Label lblFullName;
+        private Label lblNotFound;
+        private ContextMenuStrip contextUser;
+        private ToolStripMenuItem addFriendToolStripMenuItem;
+        private ToolStripMenuItem messageToolStripMenuItem;
+        private ToolStripMenuItem logoutToolStripMenuItem2;
+        private ToolStripMenuItem notificationsToolStripMenuItem;
+        private ToolStripMenuItem friendsToolStripMenuItem;
+        private Panel panel3;
+        private PictureBox pictureBox5;
+        private PictureBox pbMessagePic;
+        private Label lblUserMessage;
+        private ReaLTaiizor.Controls.Separator separator1;
+        private ReaLTaiizor.Controls.Separator separator2;
+        private Label label3;
+        private TextBox textBox1;
+        private ReaLTaiizor.Controls.RichTextBoxEdit richTextBoxEdit2;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox6;
+        private PictureBox pictureBox7;
+        private PictureBox pictureBox8;
         //private ContextMenuStrip contextForms2;
     }
 }

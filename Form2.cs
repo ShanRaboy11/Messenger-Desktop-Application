@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Messenger_Desktop_Application.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -82,34 +83,81 @@ namespace Messenger_Desktop_Application
 
         private void searchUser(object sender, EventArgs e)
         {
-            lblSearch.Text = "";
+            string[] userInfo = searchForUser(tbxSUser.Text);
 
-            if (searchForUser(tbxSUser.Text) == 1)
+            if (userInfo != null)
             {
+                // Display first and last name
+                lblFullName.Text = userInfo[0] + " " + userInfo[1];
+                string gender = userInfo[2];
 
+                if (gender == "Male")
+                {
+                    pbProfilePic.Image = Resources.male_profilepicture;
+
+                }
+                else if (gender == "Female")
+                {
+                    pbProfilePic.Image = Resources.female_profilepicture;
+                }
+                else
+                    pbProfilePic.Image = Resources.notsay_profilepicture;
+                lblNotFound.Visible = false;
+            }
+            else
+            {
+                lblFullName.Text = "";
+                pbProfilePic.Image = null;
+                lblNotFound.Visible = true;
             }
         }
 
-        private int searchForUser(string username)
+        private string[] searchForUser(string input)
         {
             string filePath = AppContext.BaseDirectory + "Accounts.txt";
 
             using (StreamReader sr = new StreamReader(filePath))
             {
                 string line;
-                while ((line = sr.ReadLine()) != null) // Read file line by line
+                while ((line = sr.ReadLine()) != null)
                 {
-                    string[] data = line.Split(','); // Assume CSV format: username,password,...
-                    string storedUsername = data[2].Trim(); // First column: username
+                    string[] data = line.Split(','); // Split line into array
 
-                   // Check if the credentials match
-                   if (storedUsername == username)
-                   {
-                        return 1; // Match found, return success
-                   }
+                    if (data.Length >= 6) // Ensure there are enough fields
+                    {
+                        string firstName = data[0].Trim();
+                        string lastName = data[1].Trim();
+                        string gender = data[7].Trim();
+
+                        // Check if input matches username, first name, or last name
+                        if (firstName.ToLower() == input.ToLower() || lastName.ToLower() == input.ToLower())
+                        {
+                            return new string[] { firstName, lastName, gender }; // Return user details
+                        }
+                    }
                 }
             }
-            return 0; // No match found
+            return null; // No match found
+        }
+
+        private void tbxSearch(object sender, EventArgs e)
+        {
+            lblSearch.Text = "";
+        }
+
+        private void userMessage(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMessage(object sender, EventArgs e)
+        {
+            label3.Text = "";
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

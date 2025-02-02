@@ -667,7 +667,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form3";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form3";
+            Text = "Messenger";
             panel1.ResumeLayout(false);
             contextForms3.ResumeLayout(false);
             ResumeLayout(false);

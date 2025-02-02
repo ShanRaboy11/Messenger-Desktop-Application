@@ -95,6 +95,10 @@ namespace Messenger_Desktop_Application
                 messenger.Show();
                 this.Hide();
             }
+            else if(tbxUserName.Text == "" && tbxPassword.Text == "")
+            {
+                MessageBox.Show("Fill in all required fields to login.\nPlease try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
                 MessageBox.Show("Incorrect username or password. Please try again.", "Login Failed" , MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

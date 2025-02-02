@@ -379,14 +379,14 @@
             // 
             contextForms1.Items.AddRange(new ToolStripItem[] { closeToolStripMenuItem, maxmizeToolStripMenuItem, minimizeToolStripMenuItem });
             contextForms1.Name = "contextMenuStrip1";
-            contextForms1.Size = new Size(181, 92);
+            contextForms1.Size = new Size(125, 70);
             // 
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
             closeToolStripMenuItem.Image = (Image)resources.GetObject("closeToolStripMenuItem.Image");
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(180, 22);
+            closeToolStripMenuItem.Size = new Size(124, 22);
             closeToolStripMenuItem.Text = "Close";
             closeToolStripMenuItem.Click += Close;
             // 
@@ -395,7 +395,7 @@
             maxmizeToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
             maxmizeToolStripMenuItem.Image = Properties.Resources.maximise;
             maxmizeToolStripMenuItem.Name = "maxmizeToolStripMenuItem";
-            maxmizeToolStripMenuItem.Size = new Size(180, 22);
+            maxmizeToolStripMenuItem.Size = new Size(124, 22);
             maxmizeToolStripMenuItem.Text = "Maxmize";
             maxmizeToolStripMenuItem.Click += Maximize;
             // 
@@ -404,7 +404,7 @@
             minimizeToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
             minimizeToolStripMenuItem.Image = Properties.Resources.window_minimize;
             minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
-            minimizeToolStripMenuItem.Size = new Size(180, 22);
+            minimizeToolStripMenuItem.Size = new Size(124, 22);
             minimizeToolStripMenuItem.Text = "Minimize";
             minimizeToolStripMenuItem.Click += Minimize;
             // 
@@ -432,7 +432,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Messenger";
             MouseDown += Form1_MouseDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
