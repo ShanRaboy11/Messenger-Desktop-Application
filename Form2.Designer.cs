@@ -73,13 +73,13 @@
             separator1 = new ReaLTaiizor.Controls.Separator();
             separator2 = new ReaLTaiizor.Controls.Separator();
             label3 = new Label();
-            textBox1 = new TextBox();
+            tbxUserMessage = new TextBox();
             richTextBoxEdit2 = new ReaLTaiizor.Controls.RichTextBoxEdit();
-            pictureBox4 = new PictureBox();
-            pictureBox5 = new PictureBox();
-            pictureBox6 = new PictureBox();
-            pictureBox7 = new PictureBox();
-            pictureBox8 = new PictureBox();
+            pbGIF = new PictureBox();
+            pbSticker = new PictureBox();
+            pbImages = new PictureBox();
+            pbPlus = new PictureBox();
+            pbLike = new PictureBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -92,11 +92,11 @@
             contextForm2.SuspendLayout();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbMessagePic).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbGIF).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbSticker).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbImages).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbPlus).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbLike).BeginInit();
             SuspendLayout();
             // 
             // panel5
@@ -106,6 +106,7 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(290, 774);
             panel5.TabIndex = 6;
+            panel5.Visible = false;
             // 
             // panel2
             // 
@@ -141,6 +142,7 @@
             // 
             lblSearch.AutoSize = true;
             lblSearch.BackColor = Color.White;
+            lblSearch.Cursor = Cursors.IBeam;
             lblSearch.Font = new Font("Helvetica Neue", 9.999999F);
             lblSearch.ForeColor = Color.DimGray;
             lblSearch.Location = new Point(65, 105);
@@ -161,7 +163,6 @@
             tbxSUser.Size = new Size(206, 17);
             tbxSUser.TabIndex = 42;
             tbxSUser.Click += tbxSearch;
-            tbxSUser.Enter += searchUser;
             // 
             // label2
             // 
@@ -278,6 +279,7 @@
             // lblFullName
             // 
             lblFullName.AutoSize = true;
+            lblFullName.ContextMenuStrip = contextUser;
             lblFullName.Font = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             lblFullName.Location = new Point(105, 27);
             lblFullName.Name = "lblFullName";
@@ -520,6 +522,7 @@
             separator1.Size = new Size(581, 10);
             separator1.TabIndex = 10;
             separator1.Text = "separator1";
+            separator1.Visible = false;
             // 
             // separator2
             // 
@@ -529,11 +532,13 @@
             separator2.Size = new Size(581, 10);
             separator2.TabIndex = 11;
             separator2.Text = "separator2";
+            separator2.Visible = false;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.White;
+            label3.Cursor = Cursors.IBeam;
             label3.Font = new Font("Helvetica Neue", 9.999999F);
             label3.ForeColor = Color.DimGray;
             label3.Location = new Point(420, 584);
@@ -541,19 +546,21 @@
             label3.Size = new Size(120, 16);
             label3.TabIndex = 45;
             label3.Text = "Search Messenger";
+            label3.Visible = false;
             label3.Click += lblMessage;
             // 
-            // textBox1
+            // tbxUserMessage
             // 
-            textBox1.BackColor = Color.White;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Helvetica Neue", 11F);
-            textBox1.ForeColor = Color.Black;
-            textBox1.Location = new Point(422, 583);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(386, 17);
-            textBox1.TabIndex = 46;
-            textBox1.Click += lblMessage;
+            tbxUserMessage.BackColor = Color.White;
+            tbxUserMessage.BorderStyle = BorderStyle.None;
+            tbxUserMessage.Font = new Font("Helvetica Neue", 11F);
+            tbxUserMessage.ForeColor = Color.Black;
+            tbxUserMessage.Location = new Point(422, 583);
+            tbxUserMessage.Name = "tbxUserMessage";
+            tbxUserMessage.Size = new Size(386, 17);
+            tbxUserMessage.TabIndex = 46;
+            tbxUserMessage.Visible = false;
+            tbxUserMessage.Click += lblMessage;
             // 
             // richTextBoxEdit2
             // 
@@ -575,53 +582,64 @@
             richTextBoxEdit2.TextBackColor = Color.White;
             richTextBoxEdit2.TextBorderStyle = BorderStyle.None;
             richTextBoxEdit2.TextFont = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            richTextBoxEdit2.Visible = false;
             richTextBoxEdit2.WordWrap = true;
             // 
-            // pictureBox4
+            // pbGIF
             // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(382, 579);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(26, 24);
-            pictureBox4.TabIndex = 47;
-            pictureBox4.TabStop = false;
+            pbGIF.Cursor = Cursors.Hand;
+            pbGIF.Image = (Image)resources.GetObject("pbGIF.Image");
+            pbGIF.Location = new Point(382, 579);
+            pbGIF.Name = "pbGIF";
+            pbGIF.Size = new Size(26, 24);
+            pbGIF.TabIndex = 47;
+            pbGIF.TabStop = false;
+            pbGIF.Visible = false;
             // 
-            // pictureBox5
+            // pbSticker
             // 
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(353, 579);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(26, 24);
-            pictureBox5.TabIndex = 48;
-            pictureBox5.TabStop = false;
+            pbSticker.Cursor = Cursors.Hand;
+            pbSticker.Image = (Image)resources.GetObject("pbSticker.Image");
+            pbSticker.Location = new Point(353, 579);
+            pbSticker.Name = "pbSticker";
+            pbSticker.Size = new Size(26, 24);
+            pbSticker.TabIndex = 48;
+            pbSticker.TabStop = false;
+            pbSticker.Visible = false;
             // 
-            // pictureBox6
+            // pbImages
             // 
-            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(324, 579);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(26, 24);
-            pictureBox6.TabIndex = 49;
-            pictureBox6.TabStop = false;
+            pbImages.Cursor = Cursors.Hand;
+            pbImages.Image = (Image)resources.GetObject("pbImages.Image");
+            pbImages.Location = new Point(324, 579);
+            pbImages.Name = "pbImages";
+            pbImages.Size = new Size(26, 24);
+            pbImages.TabIndex = 49;
+            pbImages.TabStop = false;
+            pbImages.Visible = false;
             // 
-            // pictureBox7
+            // pbPlus
             // 
-            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(298, 580);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(22, 21);
-            pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox7.TabIndex = 50;
-            pictureBox7.TabStop = false;
+            pbPlus.Cursor = Cursors.Hand;
+            pbPlus.Image = (Image)resources.GetObject("pbPlus.Image");
+            pbPlus.Location = new Point(298, 580);
+            pbPlus.Name = "pbPlus";
+            pbPlus.Size = new Size(22, 21);
+            pbPlus.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbPlus.TabIndex = 50;
+            pbPlus.TabStop = false;
+            pbPlus.Visible = false;
             // 
-            // pictureBox8
+            // pbLike
             // 
-            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(831, 579);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(26, 24);
-            pictureBox8.TabIndex = 51;
-            pictureBox8.TabStop = false;
+            pbLike.Cursor = Cursors.Hand;
+            pbLike.Image = (Image)resources.GetObject("pbLike.Image");
+            pbLike.Location = new Point(831, 579);
+            pbLike.Name = "pbLike";
+            pbLike.Size = new Size(26, 24);
+            pbLike.TabIndex = 51;
+            pbLike.TabStop = false;
+            pbLike.Visible = false;
             // 
             // Form2
             // 
@@ -629,14 +647,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1148, 639);
             ContextMenuStrip = contextForm2;
-            Controls.Add(pictureBox8);
-            Controls.Add(pictureBox7);
-            Controls.Add(pictureBox6);
-            Controls.Add(pictureBox5);
-            Controls.Add(pictureBox4);
+            Controls.Add(pbLike);
+            Controls.Add(pbPlus);
+            Controls.Add(pbImages);
+            Controls.Add(pbSticker);
+            Controls.Add(pbGIF);
             Controls.Add(label3);
             Controls.Add(lblUserMessage);
-            Controls.Add(textBox1);
+            Controls.Add(tbxUserMessage);
             Controls.Add(pbMessagePic);
             Controls.Add(richTextBoxEdit2);
             Controls.Add(menuStrip1);
@@ -649,7 +667,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "Form2";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Messenger";
             MouseDown += Form2_MouseDown;
             panel2.ResumeLayout(false);
@@ -667,11 +685,11 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbMessagePic).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbGIF).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbSticker).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbImages).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbPlus).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbLike).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -720,18 +738,18 @@
         private ToolStripMenuItem notificationsToolStripMenuItem;
         private ToolStripMenuItem friendsToolStripMenuItem;
         private Panel panel3;
-        private PictureBox pictureBox5;
+        private PictureBox pbSticker;
         private PictureBox pbMessagePic;
         private Label lblUserMessage;
         private ReaLTaiizor.Controls.Separator separator1;
         private ReaLTaiizor.Controls.Separator separator2;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox tbxUserMessage;
         private ReaLTaiizor.Controls.RichTextBoxEdit richTextBoxEdit2;
-        private PictureBox pictureBox4;
-        private PictureBox pictureBox6;
-        private PictureBox pictureBox7;
-        private PictureBox pictureBox8;
+        private PictureBox pbGIF;
+        private PictureBox pbImages;
+        private PictureBox pbPlus;
+        private PictureBox pbLike;
         //private ContextMenuStrip contextForms2;
     }
 }

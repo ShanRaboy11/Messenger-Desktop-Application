@@ -14,6 +14,7 @@ namespace Messenger_Desktop_Application
 {
     public partial class Form2 : Form
     {
+        List <string> foundUser = new List<string>();
         public Form2()
         {
             InitializeComponent();
@@ -87,7 +88,6 @@ namespace Messenger_Desktop_Application
 
             if (userInfo != null)
             {
-                // Display first and last name
                 lblFullName.Text = userInfo[0] + " " + userInfo[1];
                 string gender = userInfo[2];
 
@@ -143,11 +143,40 @@ namespace Messenger_Desktop_Application
         private void tbxSearch(object sender, EventArgs e)
         {
             lblSearch.Text = "";
+            lblNotFound.Visible = false;
         }
 
-        private void userMessage(object sender, EventArgs e)
+        private void userMessage(object sender, EventArgs e) 
         {
+            string[] userInfo = searchForUser(tbxSUser.Text);
 
+            foundUser.Add(userInfo[0]);
+            foundUser.Add(userInfo[1]);
+            foundUser.Add(userInfo[2]);
+
+            lblUserMessage.Text = foundUser[0] + " " + foundUser[1];
+            string gender = foundUser[2];
+            if (gender == "Male")
+            {
+                pbMessagePic.Image = Resources.male_profilepicture;
+            }
+            else if (gender == "Female")
+            {
+                pbMessagePic.Image = Resources.female_profilepicture;
+            }
+            else
+                pbMessagePic.Image = Resources.notsay_profilepicture;
+
+            panel5.Visible = true;
+            separator1.Visible = true;
+            separator2.Visible = true;
+            pbLike.Visible = true;
+            pbGIF.Visible = true;
+            pbImages.Visible = true;
+            pbPlus.Visible = true;
+            pbSticker.Visible = true;
+            label3.Visible = true;
+            tbxUserMessage.Visible = true;
         }
 
         private void lblMessage(object sender, EventArgs e)

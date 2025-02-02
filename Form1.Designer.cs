@@ -62,6 +62,7 @@
             // 
             userPass.AutoSize = true;
             userPass.BackColor = Color.White;
+            userPass.Cursor = Cursors.IBeam;
             userPass.Font = new Font("Helvetica Neue", 10.999999F);
             userPass.ForeColor = Color.DimGray;
             userPass.Location = new Point(40, 219);
@@ -75,6 +76,7 @@
             // 
             userName.AutoSize = true;
             userName.BackColor = Color.White;
+            userName.Cursor = Cursors.IBeam;
             userName.Font = new Font("Helvetica Neue", 10.999999F);
             userName.ForeColor = Color.DimGray;
             userName.Location = new Point(40, 155);

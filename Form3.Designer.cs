@@ -181,6 +181,7 @@
             // 
             lblFirst.AutoSize = true;
             lblFirst.BackColor = Color.White;
+            lblFirst.Cursor = Cursors.IBeam;
             lblFirst.Font = new Font("Helvetica Neue", 10.999999F);
             lblFirst.ForeColor = Color.DimGray;
             lblFirst.Location = new Point(24, 136);
@@ -205,6 +206,7 @@
             // 
             lblLast.AutoSize = true;
             lblLast.BackColor = Color.White;
+            lblLast.Cursor = Cursors.IBeam;
             lblLast.Font = new Font("Helvetica Neue", 10.999999F);
             lblLast.ForeColor = Color.DimGray;
             lblLast.Location = new Point(319, 137);
@@ -229,6 +231,7 @@
             // 
             lblPass.AutoSize = true;
             lblPass.BackColor = Color.White;
+            lblPass.Cursor = Cursors.IBeam;
             lblPass.Font = new Font("Helvetica Neue", 10.999999F);
             lblPass.ForeColor = Color.DimGray;
             lblPass.Location = new Point(23, 255);
@@ -254,6 +257,7 @@
             // 
             lblEmail.AutoSize = true;
             lblEmail.BackColor = Color.White;
+            lblEmail.Cursor = Cursors.IBeam;
             lblEmail.Font = new Font("Helvetica Neue", 10.999999F);
             lblEmail.ForeColor = Color.DimGray;
             lblEmail.Location = new Point(23, 195);
