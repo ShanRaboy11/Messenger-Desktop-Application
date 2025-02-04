@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            panel5 = new Panel();
+            flpChatMessages = new Panel();
             panel2 = new Panel();
             lblNotFound = new Label();
             lblSearch = new Label();
@@ -80,6 +80,7 @@
             pbImages = new PictureBox();
             pbPlus = new PictureBox();
             pbLike = new PictureBox();
+            flipChatMessages = new FlowLayoutPanel();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -99,14 +100,15 @@
             ((System.ComponentModel.ISupportInitialize)pbLike).BeginInit();
             SuspendLayout();
             // 
-            // panel5
+            // flpChatMessages
             // 
-            panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Location = new Point(864, -12);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(290, 774);
-            panel5.TabIndex = 6;
-            panel5.Visible = false;
+            flpChatMessages.AutoScroll = true;
+            flpChatMessages.BorderStyle = BorderStyle.FixedSingle;
+            flpChatMessages.Location = new Point(864, -12);
+            flpChatMessages.Name = "flpChatMessages";
+            flpChatMessages.Size = new Size(290, 774);
+            flpChatMessages.TabIndex = 6;
+            flpChatMessages.Visible = false;
             // 
             // panel2
             // 
@@ -633,13 +635,23 @@
             // pbLike
             // 
             pbLike.Cursor = Cursors.Hand;
-            pbLike.Image = (Image)resources.GetObject("pbLike.Image");
-            pbLike.Location = new Point(831, 579);
+            pbLike.Image = Properties.Resources.like__1_;
+            pbLike.Location = new Point(830, 579);
             pbLike.Name = "pbLike";
             pbLike.Size = new Size(26, 24);
             pbLike.TabIndex = 51;
             pbLike.TabStop = false;
             pbLike.Visible = false;
+            pbLike.Click += btnSendMessage_Click;
+            // 
+            // flipChatMessages
+            // 
+            flipChatMessages.AutoScroll = true;
+            flipChatMessages.FlowDirection = FlowDirection.TopDown;
+            flipChatMessages.Location = new Point(300, 116);
+            flipChatMessages.Name = "flipChatMessages";
+            flipChatMessages.Size = new Size(558, 443);
+            flipChatMessages.TabIndex = 52;
             // 
             // Form2
             // 
@@ -647,6 +659,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1148, 639);
             ContextMenuStrip = contextForm2;
+            Controls.Add(flipChatMessages);
             Controls.Add(pbLike);
             Controls.Add(pbPlus);
             Controls.Add(pbImages);
@@ -660,7 +673,7 @@
             Controls.Add(menuStrip1);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Controls.Add(panel5);
+            Controls.Add(flpChatMessages);
             Controls.Add(separator1);
             Controls.Add(separator2);
             FormBorderStyle = FormBorderStyle.None;
@@ -696,7 +709,7 @@
 
         #endregion
 
-        private Panel panel5;
+        private Panel flpChatMessages;
         private Panel panel2;
         private Label lblSearch;
         public Label label2;
@@ -750,6 +763,7 @@
         private PictureBox pbImages;
         private PictureBox pbPlus;
         private PictureBox pbLike;
+        private FlowLayoutPanel flipChatMessages;
         //private ContextMenuStrip contextForms2;
     }
 }

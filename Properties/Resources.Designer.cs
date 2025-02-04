@@ -103,6 +103,16 @@ namespace Messenger_Desktop_Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap like__1_ {
+            get {
+                object obj = ResourceManager.GetObject("like (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap male_profilepicture {
             get {
                 object obj = ResourceManager.GetObject("male_profilepicture", resourceCulture);
@@ -136,6 +146,26 @@ namespace Messenger_Desktop_Application.Properties {
         internal static System.Drawing.Bitmap notsay_profilepicture {
             get {
                 object obj = ResourceManager.GetObject("notsay_profilepicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap send_icon {
+            get {
+                object obj = ResourceManager.GetObject("send_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap send_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("send_icon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

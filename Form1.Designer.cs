@@ -60,6 +60,7 @@
             // 
             // userPass
             // 
+            userPass.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             userPass.AutoSize = true;
             userPass.BackColor = Color.White;
             userPass.Cursor = Cursors.IBeam;
@@ -74,6 +75,7 @@
             // 
             // userName
             // 
+            userName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             userName.AutoSize = true;
             userName.BackColor = Color.White;
             userName.Cursor = Cursors.IBeam;
@@ -89,6 +91,7 @@
             // cyberButton2
             // 
             cyberButton2.Alpha = 20;
+            cyberButton2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cyberButton2.BackColor = Color.Transparent;
             cyberButton2.Background = true;
             cyberButton2.Background_WidthPen = 4F;
@@ -131,6 +134,7 @@
             // cyberButton1
             // 
             cyberButton1.Alpha = 20;
+            cyberButton1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cyberButton1.BackColor = Color.Transparent;
             cyberButton1.Background = true;
             cyberButton1.Background_WidthPen = 4F;
@@ -172,6 +176,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(167, 433);
             pictureBox2.Name = "pictureBox2";
@@ -181,6 +186,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Helvetica Neue", 12F, FontStyle.Bold);
             label2.ForeColor = Color.Black;
@@ -192,6 +198,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Helvetica Neue", 10.749999F);
             label1.ForeColor = Color.DimGray;
@@ -203,6 +210,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(158, 50);
             pictureBox1.Name = "pictureBox1";
@@ -320,6 +328,7 @@
             // 
             // richTextBoxEdit1
             // 
+            richTextBoxEdit1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             richTextBoxEdit1.AutoWordSelection = false;
             richTextBoxEdit1.BackColor = Color.Transparent;
             richTextBoxEdit1.BackgroundImageLayout = ImageLayout.Center;
@@ -343,19 +352,21 @@
             // 
             // tbxPassword
             // 
+            tbxPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tbxPassword.BackColor = Color.White;
             tbxPassword.BorderStyle = BorderStyle.None;
             tbxPassword.Font = new Font("Helvetica Neue", 11F);
             tbxPassword.ForeColor = Color.Black;
             tbxPassword.Location = new Point(42, 219);
             tbxPassword.Name = "tbxPassword";
-            tbxPassword.PasswordChar = '*';
             tbxPassword.Size = new Size(306, 17);
             tbxPassword.TabIndex = 40;
+            tbxPassword.UseSystemPasswordChar = true;
             tbxPassword.Click += loginPass;
             // 
             // richTextBoxEdit3
             // 
+            richTextBoxEdit3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             richTextBoxEdit3.AutoWordSelection = false;
             richTextBoxEdit3.BackColor = Color.Transparent;
             richTextBoxEdit3.BackgroundImageLayout = ImageLayout.Center;
@@ -414,6 +425,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.White;
             ClientSize = new Size(396, 479);
             ContextMenuStrip = contextForms1;

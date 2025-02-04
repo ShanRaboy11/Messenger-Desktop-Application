@@ -15,9 +15,12 @@ namespace Messenger_Desktop_Application
     public partial class Form2 : Form
     {
         List <string> foundUser = new List<string>();
-        public Form2()
+        private string currentUser;
+
+        public Form2(string username)
         {
             InitializeComponent();
+            currentUser = username; // Assign the logged-in user
         }
 
         [DllImport("user32.dll")]
@@ -167,7 +170,7 @@ namespace Messenger_Desktop_Application
             else
                 pbMessagePic.Image = Resources.notsay_profilepicture;
 
-            panel5.Visible = true;
+            flpChatMessages.Visible = true;
             separator1.Visible = true;
             separator2.Visible = true;
             pbLike.Visible = true;
@@ -182,7 +185,104 @@ namespace Messenger_Desktop_Application
         private void lblMessage(object sender, EventArgs e)
         {
             label3.Text = "";
+            pbLike.Image = Resources.send_icon1;
         }
+
+        private void btnSendMessage_Click(object sender, EventArgs e)
+        {
+            string message = tbxUserMessage.Text.Trim();
+            if (string.IsNullOrEmpty(message)) return;
+
+            string senderName = currentUser; // Retrieve from login session
+            string receiverName = lblUserMessage.Text; // Selected user
+
+            SendMessage(senderName, receiverName, message);
+            tbxUserMessage.Clear();
+        }
+
+        private void SendMessage(string sender, string receiver, string message)
+        {
+            string filePath = AppContext.BaseDirectory + "Messages.txt";
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+
+            using (StreamWriter sw = new StreamWriter(filePath, true))
+            {
+                sw.WriteLine($"{sender},{receiver},{timestamp},{message}");
+            }
+
+            // Update UI with new message
+            DisplayMessage(sender, message, timestamp);
+        }
+
+        private void LoadMessages(string currentUser)
+        {
+            flpChatMessages.Controls.Clear();
+            string filePath = AppContext.BaseDirectory + "Messages.txt";
+
+            if (!File.Exists(filePath)) return;
+
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] data = line.Split(',');
+                    if (data.Length < 4) continue;
+
+                    string sender = data[0].Trim();
+                    string receiver = data[1].Trim();
+                    string timestamp = data[2].Trim();
+                    string content = data[3].Trim();
+
+                    if (sender == currentUser || receiver == currentUser)
+                    {
+                        DisplayMessage(sender, content, timestamp);
+                    }
+                }
+            }
+        }
+
+        private void DisplayMessage(string sender, string message, string timestamp)
+        {
+            // Panel for message
+            Panel pnlMessage = new Panel();
+            pnlMessage.AutoSize = true;
+            pnlMessage.Padding = new Padding(5);
+            pnlMessage.Margin = new Padding(5);
+            pnlMessage.MaximumSize = new Size(flpChatMessages.Width - 20, 0);
+            pnlMessage.BackColor = sender == currentUser ? Color.LightBlue : Color.LightGray;
+
+            // Label for text
+            Label lblMessage = new Label();
+            lblMessage.AutoSize = true;
+            lblMessage.Padding = new Padding(10);
+            lblMessage.MaximumSize = new Size(flpChatMessages.Width - 40, 0);
+            lblMessage.Text = $"{sender} [{timestamp}]:\n{message}";
+            lblMessage.ForeColor = Color.Black;
+            lblMessage.BorderStyle = BorderStyle.None;
+
+            // Align message based on sender
+            if (sender == currentUser)
+            {
+                lblMessage.TextAlign = ContentAlignment.MiddleRight;
+                pnlMessage.Dock = DockStyle.Right;
+            }
+            else
+            {
+                lblMessage.TextAlign = ContentAlignment.MiddleLeft;
+                pnlMessage.Dock = DockStyle.Left;
+            }
+
+            // Add label to panel
+            pnlMessage.Controls.Add(lblMessage);
+
+            // Add panel to FlowLayoutPanel
+            flpChatMessages.Controls.Add(pnlMessage);
+
+            // Ensure latest message is visible
+            flpChatMessages.ScrollControlIntoView(pnlMessage);
+        }
+
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {

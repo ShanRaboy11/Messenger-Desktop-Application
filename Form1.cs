@@ -87,11 +87,11 @@ namespace Messenger_Desktop_Application
 
         private void btnLogin(object sender, EventArgs e)
         {
-            Form2 messenger = new Form2();
 
             if (searchCredentials(tbxUserName.Text, tbxPassword.Text) == 1)
             {
                 MessageBox.Show("Login successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form2 messenger = new Form2(tbxUserName.Text);
                 messenger.Show();
                 this.Hide();
             }

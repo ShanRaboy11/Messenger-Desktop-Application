@@ -248,9 +248,9 @@
             userCPassword.ForeColor = Color.Black;
             userCPassword.Location = new Point(25, 255);
             userCPassword.Name = "userCPassword";
-            userCPassword.PasswordChar = '*';
             userCPassword.Size = new Size(478, 17);
             userCPassword.TabIndex = 50;
+            userCPassword.UseSystemPasswordChar = true;
             userCPassword.Leave += userPass;
             // 
             // lblEmail
