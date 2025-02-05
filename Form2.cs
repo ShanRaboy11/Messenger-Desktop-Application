@@ -1,5 +1,6 @@
 ﻿using Messenger_Desktop_Application.Properties;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +15,14 @@ namespace Messenger_Desktop_Application
 {
     public partial class Form2 : Form
     {
-        List <string> foundUser = new List<string>();
+        List<string> foundUser = new List<string>();
         private string currentUser;
 
         public Form2(string username)
         {
             InitializeComponent();
             currentUser = username; // Assign the logged-in user
+            LoadMessages(currentUser, null);
         }
 
         [DllImport("user32.dll")]
@@ -149,38 +151,52 @@ namespace Messenger_Desktop_Application
             lblNotFound.Visible = false;
         }
 
-        private void userMessage(object sender, EventArgs e) 
+        private void userMessage(object sender, EventArgs e)
         {
             string[] userInfo = searchForUser(tbxSUser.Text);
 
-            foundUser.Add(userInfo[0]);
-            foundUser.Add(userInfo[1]);
-            foundUser.Add(userInfo[2]);
-
-            lblUserMessage.Text = foundUser[0] + " " + foundUser[1];
-            string gender = foundUser[2];
-            if (gender == "Male")
+            if (userInfo != null)
             {
-                pbMessagePic.Image = Resources.male_profilepicture;
-            }
-            else if (gender == "Female")
-            {
-                pbMessagePic.Image = Resources.female_profilepicture;
-            }
-            else
-                pbMessagePic.Image = Resources.notsay_profilepicture;
+                foundUser.Clear();
+                foundUser.Add(userInfo[0]);
+                foundUser.Add(userInfo[1]);
+                foundUser.Add(userInfo[2]);
 
-            flpChatMessages.Visible = true;
-            separator1.Visible = true;
-            separator2.Visible = true;
-            pbLike.Visible = true;
-            pbGIF.Visible = true;
-            pbImages.Visible = true;
-            pbPlus.Visible = true;
-            pbSticker.Visible = true;
-            label3.Visible = true;
-            tbxUserMessage.Visible = true;
+                lblUserMessage.Text = foundUser[0] + " " + foundUser[1];
+
+                string gender = foundUser[2];
+                if (gender == "Male")
+                {
+                    pbMessagePic.Image = Resources.male_profilepicture;
+                }
+                else if (gender == "Female")
+                {
+                    pbMessagePic.Image = Resources.female_profilepicture;
+                }
+                else
+                {
+                    pbMessagePic.Image = Resources.notsay_profilepicture;
+                }
+
+                // Make chat UI visible
+                flipChatMessage.Visible = true;
+                pnlSide.Visible = true;
+                separator1.Visible = true;
+                separator2.Visible = true;
+                pbLike.Visible = true;
+                pbGIF.Visible = true;
+                pbImages.Visible = true;
+                pbPlus.Visible = true;
+                pbSticker.Visible = true;
+                label3.Visible = true;
+                tbxUserMessage.Visible = true;
+
+                // Pass the foundUser to LoadMessages directly
+                string selectedUsername = $"{foundUser[0]} {foundUser[1]}";
+                LoadMessages(currentUser, selectedUsername);  // Pass the full name instead
+            }
         }
+
 
         private void lblMessage(object sender, EventArgs e)
         {
@@ -196,6 +212,7 @@ namespace Messenger_Desktop_Application
             string senderName = currentUser; // Retrieve from login session
             string receiverName = lblUserMessage.Text; // Selected user
 
+            pbLike.Image = Resources.like__1_;
             SendMessage(senderName, receiverName, message);
             tbxUserMessage.Clear();
         }
@@ -205,21 +222,28 @@ namespace Messenger_Desktop_Application
             string filePath = AppContext.BaseDirectory + "Messages.txt";
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
-            using (StreamWriter sw = new StreamWriter(filePath, true))
+            // Use a lock to prevent concurrent file access issues
+            lock (filePath)
             {
-                sw.WriteLine($"{sender},{receiver},{timestamp},{message}");
+                using (StreamWriter sw = new StreamWriter(filePath, true))
+                {
+                    sw.WriteLine($"{sender},{receiver},{timestamp},{message}");
+                }
             }
 
             // Update UI with new message
-            DisplayMessage(sender, message, timestamp);
+            DisplayMessage(sender, message, timestamp, insertAtTop: true);
         }
 
-        private void LoadMessages(string currentUser)
+
+        private void LoadMessages(string currentUser, string selectedUser)
         {
-            flpChatMessages.Controls.Clear();
+            flipChatMessage.Controls.Clear(); // Clear previous messages
             string filePath = AppContext.BaseDirectory + "Messages.txt";
 
             if (!File.Exists(filePath)) return;
+
+            List<string> messages = new List<string>(); // Store messages in a list
 
             using (StreamReader sr = new StreamReader(filePath))
             {
@@ -234,55 +258,99 @@ namespace Messenger_Desktop_Application
                     string timestamp = data[2].Trim();
                     string content = data[3].Trim();
 
-                    if (sender == currentUser || receiver == currentUser)
+                    // Check if message is between currentUser and selectedUser
+                    if ((sender == currentUser && receiver == selectedUser) ||
+                        (sender == selectedUser && receiver == currentUser))
                     {
-                        DisplayMessage(sender, content, timestamp);
+                        // Store message
+                        messages.Add($"{sender},{content},{timestamp}");
                     }
                 }
             }
+
+            // Display messages in reverse order (newest at the bottom)
+            for (int i = messages.Count - 1; i >= 0; i--)
+            {
+                string[] data = messages[i].Split(',');
+                string sender = data[0];
+                string content = data[1];
+                string timestamp = data[2];
+
+                DisplayMessage(sender, content, timestamp, insertAtTop: false); // Show latest messages at bottom
+            }
         }
 
-        private void DisplayMessage(string sender, string message, string timestamp)
+
+
+
+
+        private void DisplayMessage(string sender, string message, string timestamp, bool insertAtTop = true)
         {
-            // Panel for message
-            Panel pnlMessage = new Panel();
-            pnlMessage.AutoSize = true;
-            pnlMessage.Padding = new Padding(5);
-            pnlMessage.Margin = new Padding(5);
-            pnlMessage.MaximumSize = new Size(flpChatMessages.Width - 20, 0);
-            pnlMessage.BackColor = sender == currentUser ? Color.LightBlue : Color.LightGray;
-
-            // Label for text
-            Label lblMessage = new Label();
-            lblMessage.AutoSize = true;
-            lblMessage.Padding = new Padding(10);
-            lblMessage.MaximumSize = new Size(flpChatMessages.Width - 40, 0);
-            lblMessage.Text = $"{sender} [{timestamp}]:\n{message}";
-            lblMessage.ForeColor = Color.Black;
-            lblMessage.BorderStyle = BorderStyle.None;
-
-            // Align message based on sender
-            if (sender == currentUser)
+            FlowLayoutPanel messagePanel = new FlowLayoutPanel
             {
-                lblMessage.TextAlign = ContentAlignment.MiddleRight;
-                pnlMessage.Dock = DockStyle.Right;
+                AutoSize = true,
+                WrapContents = false,
+                Padding = new Padding(5),
+                Margin = new Padding(5),
+                MaximumSize = new Size(flipChatMessage.Width - 20, 0),
+                BackColor = sender == currentUser ? Color.LightBlue : Color.LightGray,
+            };
+
+            Label lblMessage = new Label
+            {
+                AutoSize = true,
+                MaximumSize = new Size(flipChatMessage.Width - 80, 0),
+                Padding = new Padding(10),
+                Text = sender == currentUser ? $"You [{timestamp}]:\n{message}" : $"{sender} [{timestamp}]:\n{message}",
+                ForeColor = Color.Black,
+                BorderStyle = BorderStyle.None
+            };
+
+            messagePanel.Controls.Add(lblMessage);
+
+            if (insertAtTop)
+            {
+                flipChatMessage.Controls.Add(messagePanel); // Add new messages at the top
+                flipChatMessage.Controls.SetChildIndex(messagePanel, 0); // Moves it to the top
             }
             else
             {
-                lblMessage.TextAlign = ContentAlignment.MiddleLeft;
-                pnlMessage.Dock = DockStyle.Left;
+                flipChatMessage.Controls.Add(messagePanel); // Add at the bottom for initial loading
             }
 
-            // Add label to panel
-            pnlMessage.Controls.Add(lblMessage);
-
-            // Add panel to FlowLayoutPanel
-            flpChatMessages.Controls.Add(pnlMessage);
-
-            // Ensure latest message is visible
-            flpChatMessages.ScrollControlIntoView(pnlMessage);
+            // Scroll to bottom to show latest messages
+            //flipChatMessage.VerticalScroll.Value = flipChatMessage.VerticalScroll.Maximum;
+            flipChatMessage.ScrollControlIntoView(flipChatMessage.Controls[flipChatMessage.Controls.Count - 1]);
+            flipChatMessage.PerformLayout();
         }
 
+
+
+        private string GetUsernameFromFullName(string fullName)
+        {
+            string filePath = AppContext.BaseDirectory + "Accounts.txt";
+
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] data = line.Split(',');
+                    if (data.Length >= 6) // Ensure sufficient data fields
+                    {
+                        string firstName = data[0].Trim();
+                        string lastName = data[1].Trim();
+                        string username = data[2].Trim(); // Assuming username is at index 2
+
+                        if ($"{firstName} {lastName}".ToLower() == fullName.ToLower())
+                        {
+                            return username; // Return the correct username
+                        }
+                    }
+                }
+            }
+            return fullName; // Fallback if username not found
+        }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {

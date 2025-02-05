@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            flpChatMessages = new Panel();
+            pnlSide = new Panel();
             panel2 = new Panel();
             lblNotFound = new Label();
             lblSearch = new Label();
@@ -80,7 +80,7 @@
             pbImages = new PictureBox();
             pbPlus = new PictureBox();
             pbLike = new PictureBox();
-            flipChatMessages = new FlowLayoutPanel();
+            flipChatMessage = new FlowLayoutPanel();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -100,15 +100,15 @@
             ((System.ComponentModel.ISupportInitialize)pbLike).BeginInit();
             SuspendLayout();
             // 
-            // flpChatMessages
+            // pnlSide
             // 
-            flpChatMessages.AutoScroll = true;
-            flpChatMessages.BorderStyle = BorderStyle.FixedSingle;
-            flpChatMessages.Location = new Point(864, -12);
-            flpChatMessages.Name = "flpChatMessages";
-            flpChatMessages.Size = new Size(290, 774);
-            flpChatMessages.TabIndex = 6;
-            flpChatMessages.Visible = false;
+            pnlSide.AutoScroll = true;
+            pnlSide.BorderStyle = BorderStyle.FixedSingle;
+            pnlSide.Location = new Point(864, -12);
+            pnlSide.Name = "pnlSide";
+            pnlSide.Size = new Size(290, 774);
+            pnlSide.TabIndex = 6;
+            pnlSide.Visible = false;
             // 
             // panel2
             // 
@@ -479,8 +479,9 @@
             // 
             // logoutToolStripMenuItem2
             // 
+            logoutToolStripMenuItem2.Image = Properties.Resources._3005766_account_door_exit_logout_icon;
             logoutToolStripMenuItem2.Name = "logoutToolStripMenuItem2";
-            logoutToolStripMenuItem2.Size = new Size(117, 22);
+            logoutToolStripMenuItem2.Size = new Size(180, 22);
             logoutToolStripMenuItem2.Text = "Logout";
             logoutToolStripMenuItem2.Click += userLogout;
             // 
@@ -644,14 +645,14 @@
             pbLike.Visible = false;
             pbLike.Click += btnSendMessage_Click;
             // 
-            // flipChatMessages
+            // flipChatMessage
             // 
-            flipChatMessages.AutoScroll = true;
-            flipChatMessages.FlowDirection = FlowDirection.TopDown;
-            flipChatMessages.Location = new Point(300, 116);
-            flipChatMessages.Name = "flipChatMessages";
-            flipChatMessages.Size = new Size(558, 443);
-            flipChatMessages.TabIndex = 52;
+            flipChatMessage.AutoScroll = true;
+            flipChatMessage.FlowDirection = FlowDirection.BottomUp;
+            flipChatMessage.Location = new Point(300, 116);
+            flipChatMessage.Name = "flipChatMessage";
+            flipChatMessage.Size = new Size(558, 443);
+            flipChatMessage.TabIndex = 52;
             // 
             // Form2
             // 
@@ -659,7 +660,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1148, 639);
             ContextMenuStrip = contextForm2;
-            Controls.Add(flipChatMessages);
+            Controls.Add(panel1);
+            Controls.Add(pnlSide);
+            Controls.Add(flipChatMessage);
             Controls.Add(pbLike);
             Controls.Add(pbPlus);
             Controls.Add(pbImages);
@@ -671,9 +674,7 @@
             Controls.Add(pbMessagePic);
             Controls.Add(richTextBoxEdit2);
             Controls.Add(menuStrip1);
-            Controls.Add(panel1);
             Controls.Add(panel2);
-            Controls.Add(flpChatMessages);
             Controls.Add(separator1);
             Controls.Add(separator2);
             FormBorderStyle = FormBorderStyle.None;
@@ -709,7 +710,7 @@
 
         #endregion
 
-        private Panel flpChatMessages;
+        private Panel pnlSide;
         private Panel panel2;
         private Label lblSearch;
         public Label label2;
@@ -763,7 +764,7 @@
         private PictureBox pbImages;
         private PictureBox pbPlus;
         private PictureBox pbLike;
-        private FlowLayoutPanel flipChatMessages;
+        private FlowLayoutPanel flipChatMessage;
         //private ContextMenuStrip contextForms2;
     }
 }
