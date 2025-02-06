@@ -198,7 +198,7 @@ namespace Messenger_Desktop_Application
                 pbSearch.Visible = true;
                 pbBiggerPhoto.Visible = true;
                 lblProfile.Visible = true;
-                lblSearch.Visible = true;
+                lblSearchConvo.Visible = true;
                 lblMute.Visible = true;
 
                 // Pass the foundUser to LoadMessages directly
@@ -397,6 +397,73 @@ namespace Messenger_Desktop_Application
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+
+        private Form2 _form2Instance; // Keep a reference to Form2
+
+        private void DarkMode(object sender, EventArgs e)
+        {
+            panel2.BackColor = Color.Black;
+            pnlSide.BackColor = Color.Black;
+            flipChatMessage.BackColor = Color.Black;
+            pnlBackground.BackColor = Color.Black;
+            lblUserMessage.ForeColor = Color.White;
+            label1.ForeColor = Color.White;
+            label2.ForeColor = Color.White;
+            lblFullName.ForeColor = Color.White;
+            lblMute.ForeColor = Color.White;
+            lblNotFound.ForeColor = Color.White;
+            lblProfile.ForeColor = Color.White;
+            lblSearchConvo.ForeColor = Color.White;
+            lblUserMessage.Visible = false;
+            lblNewName.Visible = true;
+            pictureBox1.Image = Resources.white_note1;
+            pictureBox2.Image = Resources.white_threedots;
+            pbBiggerPhoto.Image = Resources.big_male;
+            pbMessagePic.Image = Resources.small_male;
+            pbProfilePic.Image = Resources.small_male;
+            pbMute.Image = Resources.white_bell;
+            pbSearch.Image = Resources.white_big_search;
+            pbProfile.Image = Resources.white_profile;
+            pictureBox3.Image = Resources.white_small_search;
+            separator1.Visible = false;
+        }
+
+        private void LightMode(object sender, EventArgs e)
+        {
+            panel2.BackColor = Color.White;
+            pnlSide.BackColor = Color.White;
+            flipChatMessage.BackColor = Color.White;
+            pnlBackground.BackColor = Color.White;
+            lblUserMessage.ForeColor = Color.Black;
+            label1.ForeColor = Color.Black;
+            label2.ForeColor = Color.Black;
+            lblFullName.ForeColor = Color.Black;
+            lblMute.ForeColor = Color.Black;
+            lblNotFound.ForeColor = Color.Black;
+            lblProfile.ForeColor = Color.Black;
+            lblSearchConvo.ForeColor = Color.Black;
+            lblUserMessage.Visible = true;
+            lblNewName.Visible = false;
+            pictureBox1.Image = Resources.notes;
+            pictureBox2.Image = Resources.dots;
+            pnlMessage.BackColor = Color.White;
+            pbBiggerPhoto.Image = Resources.bigmale_profile;
+            pbMessagePic.Image = Resources.male_profilepicture;
+            pbProfilePic.Image = Resources.male_profilepicture;
+            pbMute.Image = Resources.black_bell;
+            pbSearch.Image = Resources.black_search;
+            pbProfile.Image = Resources.profile_black;
+            pictureBox3.Image = Resources.black_search;
+            separator1.Visible = true;
+        }
+
+        private void ViewProfile(object sender, EventArgs e)
+        {
+            Form4 profile = new Form4();
+
+            profile.Show();
         }
     }
 }
