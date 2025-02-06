@@ -198,7 +198,7 @@ namespace Messenger_Desktop_Application
                 pbSearch.Visible = true;
                 pbBiggerPhoto.Visible = true;
                 lblProfile.Visible = true;
-                lblSearch.Visible = true;
+                lblSearchConvo.Visible = true;
                 lblMute.Visible = true;
 
                 // Pass the foundUser to LoadMessages directly
