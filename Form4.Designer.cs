@@ -43,6 +43,11 @@
             label4 = new Label();
             pictureBox2 = new PictureBox();
             label5 = new Label();
+            lblFullName = new Label();
+            lblEmail = new Label();
+            lblGender = new Label();
+            lblBirthdate = new Label();
+            lblPassword = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -226,11 +231,61 @@
             label5.TabIndex = 35;
             label5.Text = "Meta";
             // 
+            // lblFullName
+            // 
+            lblFullName.AutoSize = true;
+            lblFullName.Location = new Point(146, 198);
+            lblFullName.Name = "lblFullName";
+            lblFullName.Size = new Size(37, 13);
+            lblFullName.TabIndex = 37;
+            lblFullName.Text = "label6";
+            // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(146, 236);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(37, 13);
+            lblEmail.TabIndex = 38;
+            lblEmail.Text = "label6";
+            // 
+            // lblGender
+            // 
+            lblGender.AutoSize = true;
+            lblGender.Location = new Point(190, 256);
+            lblGender.Name = "lblGender";
+            lblGender.Size = new Size(37, 13);
+            lblGender.TabIndex = 39;
+            lblGender.Text = "label6";
+            // 
+            // lblBirthdate
+            // 
+            lblBirthdate.AutoSize = true;
+            lblBirthdate.Location = new Point(190, 287);
+            lblBirthdate.Name = "lblBirthdate";
+            lblBirthdate.Size = new Size(37, 13);
+            lblBirthdate.TabIndex = 40;
+            lblBirthdate.Text = "label6";
+            // 
+            // lblPassword
+            // 
+            lblPassword.AutoSize = true;
+            lblPassword.Location = new Point(190, 314);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(37, 13);
+            lblPassword.TabIndex = 41;
+            lblPassword.Text = "label6";
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(416, 525);
+            Controls.Add(lblPassword);
+            Controls.Add(lblBirthdate);
+            Controls.Add(lblGender);
+            Controls.Add(lblEmail);
+            Controls.Add(lblFullName);
             Controls.Add(pictureBox2);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -269,5 +324,10 @@
         private Label label4;
         private PictureBox pictureBox2;
         private Label label5;
+        private Label lblFullName;
+        private Label lblEmail;
+        private Label lblGender;
+        private Label lblBirthdate;
+        private Label lblPassword;
     }
 }
