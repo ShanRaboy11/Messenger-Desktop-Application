@@ -446,16 +446,24 @@ namespace Messenger_Desktop_Application
             lblSearchConvo.ForeColor = Color.Black;
             lblUserMessage.Visible = true;
             lblNewName.Visible = false;
-            pictureBox1.Image = Resources.black_note1;
-            pictureBox2.Image = Resources.black_threedots;
-            pbBiggerPhoto.Image = Resources.big_male_light;
-            pbMessagePic.Image = Resources.small_male_light;
-            pbProfilePic.Image = Resources.small_male_light;
+            pictureBox1.Image = Resources.notes;
+            pictureBox2.Image = Resources.dots;
+            pnlMessage.BackColor = Color.White;
+            pbBiggerPhoto.Image = Resources.bigmale_profile;
+            pbMessagePic.Image = Resources.male_profilepicture;
+            pbProfilePic.Image = Resources.male_profilepicture;
             pbMute.Image = Resources.black_bell;
-            pbSearch.Image = Resources.black_big_search;
-            pbProfile.Image = Resources.black_profile;
-            pictureBox3.Image = Resources.black_small_search;
+            pbSearch.Image = Resources.black_search;
+            pbProfile.Image = Resources.profile_black;
+            pictureBox3.Image = Resources.black_search;
             separator1.Visible = true;
+        }
+
+        private void ViewProfile(object sender, EventArgs e)
+        {
+            Form4 profile = new Form4();
+
+            profile.Show();
         }
     }
 }

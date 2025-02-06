@@ -101,6 +101,7 @@
             pnlBackground = new Panel();
             lblNewName = new Label();
             pbMessagePic = new PictureBox();
+            viewProfileToolStripMenuItem = new ToolStripMenuItem();
             pnlSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbMute).BeginInit();
@@ -159,7 +160,7 @@
             // 
             lblMute.AutoSize = true;
             lblMute.Font = new Font("Helvetica Neue", 10.25F);
-            lblMute.Location = new Point(113, 210);
+            lblMute.Location = new Point(110, 210);
             lblMute.Name = "lblMute";
             lblMute.Size = new Size(38, 16);
             lblMute.TabIndex = 57;
@@ -170,7 +171,7 @@
             // 
             lblProfile.AutoSize = true;
             lblProfile.Font = new Font("Helvetica Neue", 10.25F);
-            lblProfile.Location = new Point(40, 210);
+            lblProfile.Location = new Point(38, 210);
             lblProfile.Name = "lblProfile";
             lblProfile.Size = new Size(44, 16);
             lblProfile.TabIndex = 56;
@@ -588,7 +589,7 @@
             // 
             // profileToolStripMenuItem
             // 
-            profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem2 });
+            profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { logoutToolStripMenuItem2, viewProfileToolStripMenuItem });
             profileToolStripMenuItem.Name = "profileToolStripMenuItem";
             profileToolStripMenuItem.Size = new Size(53, 20);
             profileToolStripMenuItem.Text = "Profile";
@@ -597,7 +598,7 @@
             // 
             logoutToolStripMenuItem2.Image = Properties.Resources._3005766_account_door_exit_logout_icon;
             logoutToolStripMenuItem2.Name = "logoutToolStripMenuItem2";
-            logoutToolStripMenuItem2.Size = new Size(117, 22);
+            logoutToolStripMenuItem2.Size = new Size(180, 22);
             logoutToolStripMenuItem2.Text = "Logout";
             logoutToolStripMenuItem2.Click += userLogout;
             // 
@@ -618,14 +619,14 @@
             // darkModeToolStripMenuItem
             // 
             darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
-            darkModeToolStripMenuItem.Size = new Size(180, 22);
+            darkModeToolStripMenuItem.Size = new Size(141, 22);
             darkModeToolStripMenuItem.Text = "Dark Mode";
             darkModeToolStripMenuItem.Click += DarkMode;
             // 
             // lightModeToolStripMenuItem
             // 
             lightModeToolStripMenuItem.Name = "lightModeToolStripMenuItem";
-            lightModeToolStripMenuItem.Size = new Size(180, 22);
+            lightModeToolStripMenuItem.Size = new Size(141, 22);
             lightModeToolStripMenuItem.Text = "Light Mode";
             lightModeToolStripMenuItem.Click += LightMode;
             // 
@@ -876,6 +877,14 @@
             pbMessagePic.TabIndex = 9;
             pbMessagePic.TabStop = false;
             // 
+            // viewProfileToolStripMenuItem
+            // 
+            viewProfileToolStripMenuItem.Image = Properties.Resources.profile_black;
+            viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
+            viewProfileToolStripMenuItem.Size = new Size(180, 22);
+            viewProfileToolStripMenuItem.Text = "View Profile";
+            viewProfileToolStripMenuItem.Click += ViewProfile;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1018,6 +1027,7 @@
         private Panel pnlMessage;
         private PictureBox pbMessagePic;
         private Label lblNewName;
+        private ToolStripMenuItem viewProfileToolStripMenuItem;
         //private ContextMenuStrip contextForms2;
     }
 }
