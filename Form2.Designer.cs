@@ -31,6 +31,16 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             pnlSide = new Panel();
+            lblSearchConvo = new Label();
+            lblMute = new Label();
+            lblProfile = new Label();
+            pbSearch = new PictureBox();
+            pbMute = new PictureBox();
+            pbBiggerPhoto = new PictureBox();
+            contextUser = new ContextMenuStrip(components);
+            addFriendToolStripMenuItem = new ToolStripMenuItem();
+            messageToolStripMenuItem = new ToolStripMenuItem();
+            pbProfile = new PictureBox();
             panel2 = new Panel();
             lblNotFound = new Label();
             lblSearch = new Label();
@@ -44,9 +54,6 @@
             pictureBox1 = new PictureBox();
             pnlUserProfile = new Panel();
             pbProfilePic = new PictureBox();
-            contextUser = new ContextMenuStrip(components);
-            addFriendToolStripMenuItem = new ToolStripMenuItem();
-            messageToolStripMenuItem = new ToolStripMenuItem();
             lblFullName = new Label();
             label1 = new Label();
             richTextBoxEdit1 = new ReaLTaiizor.Controls.RichTextBoxEdit();
@@ -79,6 +86,16 @@
             pbPlus = new PictureBox();
             pbLike = new PictureBox();
             flipChatMessage = new FlowLayoutPanel();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            viewToolStripMenuItem = new ToolStripMenuItem();
+            openToolStripMenuItem = new ToolStripMenuItem();
+            saveToolStripMenuItem = new ToolStripMenuItem();
+            pnlSide.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbMute).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbBiggerPhoto).BeginInit();
+            contextUser.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbProfile).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -86,7 +103,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pnlUserProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbProfilePic).BeginInit();
-            contextUser.SuspendLayout();
             panel1.SuspendLayout();
             contextForm2.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -96,17 +112,127 @@
             ((System.ComponentModel.ISupportInitialize)pbImages).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPlus).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbLike).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // pnlSide
             // 
             pnlSide.AutoScroll = true;
             pnlSide.BorderStyle = BorderStyle.FixedSingle;
-            pnlSide.Location = new Point(864, -12);
+            pnlSide.Controls.Add(lblSearchConvo);
+            pnlSide.Controls.Add(lblMute);
+            pnlSide.Controls.Add(lblProfile);
+            pnlSide.Controls.Add(pbSearch);
+            pnlSide.Controls.Add(pbMute);
+            pnlSide.Controls.Add(pbBiggerPhoto);
+            pnlSide.Controls.Add(pbProfile);
+            pnlSide.Location = new Point(873, -12);
             pnlSide.Name = "pnlSide";
-            pnlSide.Size = new Size(290, 774);
+            pnlSide.Size = new Size(281, 774);
             pnlSide.TabIndex = 6;
             pnlSide.Visible = false;
+            // 
+            // lblSearchConvo
+            // 
+            lblSearchConvo.AutoSize = true;
+            lblSearchConvo.Font = new Font("Helvetica Neue", 10.25F);
+            lblSearchConvo.Location = new Point(183, 207);
+            lblSearchConvo.Name = "lblSearchConvo";
+            lblSearchConvo.Size = new Size(49, 16);
+            lblSearchConvo.TabIndex = 58;
+            lblSearchConvo.Text = "Search";
+            lblSearchConvo.Visible = false;
+            // 
+            // lblMute
+            // 
+            lblMute.AutoSize = true;
+            lblMute.Font = new Font("Helvetica Neue", 10.25F);
+            lblMute.Location = new Point(122, 207);
+            lblMute.Name = "lblMute";
+            lblMute.Size = new Size(38, 16);
+            lblMute.TabIndex = 57;
+            lblMute.Text = "Mute";
+            lblMute.Visible = false;
+            // 
+            // lblProfile
+            // 
+            lblProfile.AutoSize = true;
+            lblProfile.Font = new Font("Helvetica Neue", 10.25F);
+            lblProfile.Location = new Point(49, 207);
+            lblProfile.Name = "lblProfile";
+            lblProfile.Size = new Size(44, 16);
+            lblProfile.TabIndex = 56;
+            lblProfile.Text = "Profile";
+            lblProfile.Visible = false;
+            // 
+            // pbSearch
+            // 
+            pbSearch.Cursor = Cursors.Hand;
+            pbSearch.Image = (Image)resources.GetObject("pbSearch.Image");
+            pbSearch.Location = new Point(188, 167);
+            pbSearch.Name = "pbSearch";
+            pbSearch.Size = new Size(33, 31);
+            pbSearch.SizeMode = PictureBoxSizeMode.Zoom;
+            pbSearch.TabIndex = 55;
+            pbSearch.TabStop = false;
+            pbSearch.Visible = false;
+            // 
+            // pbMute
+            // 
+            pbMute.Cursor = Cursors.Hand;
+            pbMute.Image = (Image)resources.GetObject("pbMute.Image");
+            pbMute.Location = new Point(121, 167);
+            pbMute.Name = "pbMute";
+            pbMute.Size = new Size(33, 31);
+            pbMute.SizeMode = PictureBoxSizeMode.Zoom;
+            pbMute.TabIndex = 54;
+            pbMute.TabStop = false;
+            pbMute.Visible = false;
+            // 
+            // pbBiggerPhoto
+            // 
+            pbBiggerPhoto.ContextMenuStrip = contextUser;
+            pbBiggerPhoto.Location = new Point(97, 66);
+            pbBiggerPhoto.Name = "pbBiggerPhoto";
+            pbBiggerPhoto.Size = new Size(81, 81);
+            pbBiggerPhoto.SizeMode = PictureBoxSizeMode.Zoom;
+            pbBiggerPhoto.TabIndex = 53;
+            pbBiggerPhoto.TabStop = false;
+            pbBiggerPhoto.Visible = false;
+            // 
+            // contextUser
+            // 
+            contextUser.Items.AddRange(new ToolStripItem[] { addFriendToolStripMenuItem, messageToolStripMenuItem });
+            contextUser.Name = "contextUser";
+            contextUser.Size = new Size(131, 48);
+            // 
+            // addFriendToolStripMenuItem
+            // 
+            addFriendToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            addFriendToolStripMenuItem.Image = (Image)resources.GetObject("addFriendToolStripMenuItem.Image");
+            addFriendToolStripMenuItem.Name = "addFriendToolStripMenuItem";
+            addFriendToolStripMenuItem.Size = new Size(130, 22);
+            addFriendToolStripMenuItem.Text = "Add friend";
+            // 
+            // messageToolStripMenuItem
+            // 
+            messageToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            messageToolStripMenuItem.Image = (Image)resources.GetObject("messageToolStripMenuItem.Image");
+            messageToolStripMenuItem.Name = "messageToolStripMenuItem";
+            messageToolStripMenuItem.Size = new Size(130, 22);
+            messageToolStripMenuItem.Text = "Message";
+            messageToolStripMenuItem.Click += userMessage;
+            // 
+            // pbProfile
+            // 
+            pbProfile.Cursor = Cursors.Hand;
+            pbProfile.Image = (Image)resources.GetObject("pbProfile.Image");
+            pbProfile.Location = new Point(53, 167);
+            pbProfile.Name = "pbProfile";
+            pbProfile.Size = new Size(33, 31);
+            pbProfile.TabIndex = 0;
+            pbProfile.TabStop = false;
+            pbProfile.Visible = false;
             // 
             // panel2
             // 
@@ -245,6 +371,7 @@
             // pbProfilePic
             // 
             pbProfilePic.ContextMenuStrip = contextUser;
+            pbProfilePic.Cursor = Cursors.Hand;
             pbProfilePic.Location = new Point(32, 12);
             pbProfilePic.Name = "pbProfilePic";
             pbProfilePic.Size = new Size(57, 50);
@@ -253,33 +380,11 @@
             pbProfilePic.TabStop = false;
             pbProfilePic.Click += userMessage;
             // 
-            // contextUser
-            // 
-            contextUser.Items.AddRange(new ToolStripItem[] { addFriendToolStripMenuItem, messageToolStripMenuItem });
-            contextUser.Name = "contextUser";
-            contextUser.Size = new Size(131, 48);
-            // 
-            // addFriendToolStripMenuItem
-            // 
-            addFriendToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            addFriendToolStripMenuItem.Image = (Image)resources.GetObject("addFriendToolStripMenuItem.Image");
-            addFriendToolStripMenuItem.Name = "addFriendToolStripMenuItem";
-            addFriendToolStripMenuItem.Size = new Size(130, 22);
-            addFriendToolStripMenuItem.Text = "Add friend";
-            // 
-            // messageToolStripMenuItem
-            // 
-            messageToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            messageToolStripMenuItem.Image = (Image)resources.GetObject("messageToolStripMenuItem.Image");
-            messageToolStripMenuItem.Name = "messageToolStripMenuItem";
-            messageToolStripMenuItem.Size = new Size(130, 22);
-            messageToolStripMenuItem.Text = "Message";
-            messageToolStripMenuItem.Click += userMessage;
-            // 
             // lblFullName
             // 
             lblFullName.AutoSize = true;
             lblFullName.ContextMenuStrip = contextUser;
+            lblFullName.Cursor = Cursors.Hand;
             lblFullName.Font = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             lblFullName.Location = new Point(105, 27);
             lblFullName.Name = "lblFullName";
@@ -638,9 +743,36 @@
             flipChatMessage.FlowDirection = FlowDirection.BottomUp;
             flipChatMessage.Location = new Point(300, 116);
             flipChatMessage.Name = "flipChatMessage";
-            flipChatMessage.Size = new Size(558, 443);
+            flipChatMessage.Size = new Size(567, 443);
             flipChatMessage.TabIndex = 52;
             flipChatMessage.WrapContents = false;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { viewToolStripMenuItem, openToolStripMenuItem, saveToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(106, 70);
+            // 
+            // viewToolStripMenuItem
+            // 
+            viewToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            viewToolStripMenuItem.Size = new Size(105, 22);
+            viewToolStripMenuItem.Text = "View";
+            // 
+            // openToolStripMenuItem
+            // 
+            openToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            openToolStripMenuItem.Name = "openToolStripMenuItem";
+            openToolStripMenuItem.Size = new Size(105, 22);
+            openToolStripMenuItem.Text = "Open";
+            // 
+            // saveToolStripMenuItem
+            // 
+            saveToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            saveToolStripMenuItem.Size = new Size(105, 22);
+            saveToolStripMenuItem.Text = "Save";
             // 
             // Form2
             // 
@@ -672,6 +804,13 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Messenger";
             MouseDown += Form2_MouseDown;
+            pnlSide.ResumeLayout(false);
+            pnlSide.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbMute).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbBiggerPhoto).EndInit();
+            contextUser.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbProfile).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -681,7 +820,6 @@
             pnlUserProfile.ResumeLayout(false);
             pnlUserProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbProfilePic).EndInit();
-            contextUser.ResumeLayout(false);
             panel1.ResumeLayout(false);
             contextForm2.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
@@ -692,6 +830,7 @@
             ((System.ComponentModel.ISupportInitialize)pbImages).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbPlus).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbLike).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -751,6 +890,17 @@
         private PictureBox pbPlus;
         private PictureBox pbLike;
         private FlowLayoutPanel flipChatMessage;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem viewToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem saveToolStripMenuItem;
+        private PictureBox pbBiggerPhoto;
+        private PictureBox pbProfile;
+        private Label lblSearchConvo;
+        private Label lblMute;
+        private Label lblProfile;
+        private PictureBox pbSearch;
+        private PictureBox pbMute;
         //private ContextMenuStrip contextForms2;
     }
 }

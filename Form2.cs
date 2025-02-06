@@ -168,14 +168,17 @@ namespace Messenger_Desktop_Application
                 if (gender == "Male")
                 {
                     pbMessagePic.Image = Resources.male_profilepicture;
+                    pbBiggerPhoto.Image = Resources.bigmale_profile;
                 }
                 else if (gender == "Female")
                 {
                     pbMessagePic.Image = Resources.female_profilepicture;
+                    pbBiggerPhoto.Image = Resources.bigfemale_profile;
                 }
                 else
                 {
                     pbMessagePic.Image = Resources.notsay_profilepicture;
+                    pbBiggerPhoto.Image = Resources.biguser_profile;
                 }
 
                 // Make chat UI visible
@@ -190,6 +193,13 @@ namespace Messenger_Desktop_Application
                 pbSticker.Visible = true;
                 label3.Visible = true;
                 tbxUserMessage.Visible = true;
+                pbProfile.Visible = true;
+                pbMute.Visible = true;
+                pbSearch.Visible = true;
+                pbBiggerPhoto.Visible = true;
+                lblProfile.Visible = true;
+                lblSearch.Visible = true;
+                lblMute.Visible = true;
 
                 // Pass the foundUser to LoadMessages directly
                 string selectedUsername = $"{foundUser[0]} {foundUser[1]}";
