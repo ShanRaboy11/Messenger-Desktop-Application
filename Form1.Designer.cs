@@ -44,17 +44,23 @@
             button3 = new Button();
             button2 = new Button();
             button6 = new Button();
-            tbxUserName = new TextBox();
             richTextBoxEdit1 = new ReaLTaiizor.Controls.RichTextBoxEdit();
             tbxPassword = new TextBox();
+            contextShortcut = new ContextMenuStrip(components);
+            copyToolStripMenuItem = new ToolStripMenuItem();
+            cutToolStripMenuItem = new ToolStripMenuItem();
+            selectAllToolStripMenuItem = new ToolStripMenuItem();
+            pasteToolStripMenuItem = new ToolStripMenuItem();
             richTextBoxEdit3 = new ReaLTaiizor.Controls.RichTextBoxEdit();
             contextForms1 = new ContextMenuStrip(components);
             closeToolStripMenuItem = new ToolStripMenuItem();
             maxmizeToolStripMenuItem = new ToolStripMenuItem();
             minimizeToolStripMenuItem = new ToolStripMenuItem();
+            tbxUsername = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
+            contextShortcut.SuspendLayout();
             contextForms1.SuspendLayout();
             SuspendLayout();
             // 
@@ -314,18 +320,6 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += Close;
             // 
-            // tbxUserName
-            // 
-            tbxUserName.BackColor = Color.White;
-            tbxUserName.BorderStyle = BorderStyle.None;
-            tbxUserName.Font = new Font("Helvetica Neue", 11F);
-            tbxUserName.ForeColor = Color.Black;
-            tbxUserName.Location = new Point(42, 156);
-            tbxUserName.Name = "tbxUserName";
-            tbxUserName.Size = new Size(306, 17);
-            tbxUserName.TabIndex = 38;
-            tbxUserName.Click += loginUser;
-            // 
             // richTextBoxEdit1
             // 
             richTextBoxEdit1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -355,7 +349,8 @@
             tbxPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tbxPassword.BackColor = Color.White;
             tbxPassword.BorderStyle = BorderStyle.None;
-            tbxPassword.Font = new Font("Helvetica Neue", 11F);
+            tbxPassword.ContextMenuStrip = contextShortcut;
+            tbxPassword.Font = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             tbxPassword.ForeColor = Color.Black;
             tbxPassword.Location = new Point(42, 219);
             tbxPassword.Name = "tbxPassword";
@@ -363,6 +358,48 @@
             tbxPassword.TabIndex = 40;
             tbxPassword.UseSystemPasswordChar = true;
             tbxPassword.Click += loginPass;
+            // 
+            // contextShortcut
+            // 
+            contextShortcut.Items.AddRange(new ToolStripItem[] { copyToolStripMenuItem, cutToolStripMenuItem, selectAllToolStripMenuItem, pasteToolStripMenuItem });
+            contextShortcut.Name = "contextMenuStrip1";
+            contextShortcut.Size = new Size(167, 92);
+            // 
+            // copyToolStripMenuItem
+            // 
+            copyToolStripMenuItem.Font = new Font("Helvetica Neue", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            copyToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
+            copyToolStripMenuItem.Size = new Size(166, 22);
+            copyToolStripMenuItem.Text = "Copy";
+            copyToolStripMenuItem.Click += CopyText;
+            // 
+            // cutToolStripMenuItem
+            // 
+            cutToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            cutToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
+            cutToolStripMenuItem.Size = new Size(166, 22);
+            cutToolStripMenuItem.Text = "Cut";
+            cutToolStripMenuItem.Click += CutText;
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            selectAllToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            selectAllToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.A;
+            selectAllToolStripMenuItem.Size = new Size(166, 22);
+            selectAllToolStripMenuItem.Text = "Select all";
+            selectAllToolStripMenuItem.Click += SelectAllText;
+            // 
+            // pasteToolStripMenuItem
+            // 
+            pasteToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            pasteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.V;
+            pasteToolStripMenuItem.Size = new Size(166, 22);
+            pasteToolStripMenuItem.Text = "Paste";
+            pasteToolStripMenuItem.Click += PasteText;
             // 
             // richTextBoxEdit3
             // 
@@ -421,6 +458,20 @@
             minimizeToolStripMenuItem.Text = "Minimize";
             minimizeToolStripMenuItem.Click += Minimize;
             // 
+            // tbxUsername
+            // 
+            tbxUsername.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tbxUsername.BackColor = Color.White;
+            tbxUsername.BorderStyle = BorderStyle.None;
+            tbxUsername.ContextMenuStrip = contextShortcut;
+            tbxUsername.Font = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            tbxUsername.ForeColor = Color.Black;
+            tbxUsername.Location = new Point(40, 156);
+            tbxUsername.Name = "tbxUsername";
+            tbxUsername.Size = new Size(306, 17);
+            tbxUsername.TabIndex = 43;
+            tbxUsername.Click += this.loginUser;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -430,7 +481,7 @@
             ClientSize = new Size(396, 479);
             ContextMenuStrip = contextForms1;
             Controls.Add(userName);
-            Controls.Add(tbxUserName);
+            Controls.Add(tbxUsername);
             Controls.Add(userPass);
             Controls.Add(tbxPassword);
             Controls.Add(cyberButton2);
@@ -451,6 +502,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
+            contextShortcut.ResumeLayout(false);
             contextForms1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -472,7 +524,6 @@
         private Button button4;
         private Button button5;
         private Button button6;
-        private TextBox tbxUserName;
         private ReaLTaiizor.Controls.RichTextBoxEdit richTextBoxEdit1;
         private TextBox tbxPassword;
         private ReaLTaiizor.Controls.RichTextBoxEdit richTextBoxEdit3;
@@ -480,5 +531,11 @@
         private ToolStripMenuItem closeToolStripMenuItem;
         private ToolStripMenuItem minimizeToolStripMenuItem;
         private ToolStripMenuItem maxmizeToolStripMenuItem;
+        private ContextMenuStrip contextShortcut;
+        private ToolStripMenuItem copyToolStripMenuItem;
+        private ToolStripMenuItem cutToolStripMenuItem;
+        private ToolStripMenuItem selectAllToolStripMenuItem;
+        private ToolStripMenuItem pasteToolStripMenuItem;
+        private TextBox tbxUsername;
     }
 }

@@ -66,8 +66,6 @@
             menuStrip1 = new MenuStrip();
             profileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem2 = new ToolStripMenuItem();
-            notificationsToolStripMenuItem = new ToolStripMenuItem();
-            friendsToolStripMenuItem = new ToolStripMenuItem();
             pbMessagePic = new PictureBox();
             lblUserMessage = new Label();
             separator1 = new ReaLTaiizor.Controls.Separator();
@@ -462,7 +460,7 @@
             menuStrip1.BackColor = SystemColors.ControlLight;
             menuStrip1.Dock = DockStyle.Bottom;
             menuStrip1.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, notificationsToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 615);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1148, 24);
@@ -481,22 +479,9 @@
             // 
             logoutToolStripMenuItem2.Image = Properties.Resources._3005766_account_door_exit_logout_icon;
             logoutToolStripMenuItem2.Name = "logoutToolStripMenuItem2";
-            logoutToolStripMenuItem2.Size = new Size(180, 22);
+            logoutToolStripMenuItem2.Size = new Size(117, 22);
             logoutToolStripMenuItem2.Text = "Logout";
             logoutToolStripMenuItem2.Click += userLogout;
-            // 
-            // notificationsToolStripMenuItem
-            // 
-            notificationsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { friendsToolStripMenuItem });
-            notificationsToolStripMenuItem.Name = "notificationsToolStripMenuItem";
-            notificationsToolStripMenuItem.Size = new Size(87, 20);
-            notificationsToolStripMenuItem.Text = "Notifications";
-            // 
-            // friendsToolStripMenuItem
-            // 
-            friendsToolStripMenuItem.Name = "friendsToolStripMenuItem";
-            friendsToolStripMenuItem.Size = new Size(118, 22);
-            friendsToolStripMenuItem.Text = "Friends";
             // 
             // pbMessagePic
             // 
@@ -620,6 +605,7 @@
             pbImages.TabIndex = 49;
             pbImages.TabStop = false;
             pbImages.Visible = false;
+            pbImages.Click += pbImage_Click;
             // 
             // pbPlus
             // 
@@ -648,11 +634,13 @@
             // flipChatMessage
             // 
             flipChatMessage.AutoScroll = true;
+            flipChatMessage.AutoSize = true;
             flipChatMessage.FlowDirection = FlowDirection.BottomUp;
             flipChatMessage.Location = new Point(300, 116);
             flipChatMessage.Name = "flipChatMessage";
             flipChatMessage.Size = new Size(558, 443);
             flipChatMessage.TabIndex = 52;
+            flipChatMessage.WrapContents = false;
             // 
             // Form2
             // 
@@ -749,8 +737,6 @@
         private ToolStripMenuItem addFriendToolStripMenuItem;
         private ToolStripMenuItem messageToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem2;
-        private ToolStripMenuItem notificationsToolStripMenuItem;
-        private ToolStripMenuItem friendsToolStripMenuItem;
         private Panel panel3;
         private PictureBox pbSticker;
         private PictureBox pbMessagePic;

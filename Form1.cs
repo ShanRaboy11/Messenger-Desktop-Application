@@ -88,14 +88,14 @@ namespace Messenger_Desktop_Application
         private void btnLogin(object sender, EventArgs e)
         {
 
-            if (searchCredentials(tbxUserName.Text, tbxPassword.Text) == 1)
+            if (searchCredentials(tbxUsername.Text, tbxPassword.Text) == 1)
             {
                 MessageBox.Show("Login successful!", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Form2 messenger = new Form2(tbxUserName.Text);
+                Form2 messenger = new Form2(tbxUsername.Text);
                 messenger.Show();
                 this.Hide();
             }
-            else if(tbxUserName.Text == "" && tbxPassword.Text == "")
+            else if(tbxUsername.Text == "" && tbxPassword.Text == "")
             {
                 MessageBox.Show("Fill in all required fields to login.\nPlease try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -129,6 +129,38 @@ namespace Messenger_Desktop_Application
                 }
             }
             return 0; // No match found
+        }
+
+        private void CopyText(object sender, EventArgs e)
+        {
+            if (tbxUsername.SelectedText.Length > 0)
+            {
+                Clipboard.SetText(tbxUsername.SelectedText);
+            }
+        }
+
+        private void CutText(object sender, EventArgs e)
+        {
+            if (tbxUsername.SelectedText.Length > 0)
+            {
+                Clipboard.SetText(tbxUsername.SelectedText);
+                tbxUsername.SelectedText = "";
+            }
+        }
+
+        private void PasteText(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                int selectionStart = tbxUsername.SelectionStart;
+                tbxUsername.Text = tbxUsername.Text.Insert(selectionStart, Clipboard.GetText());
+                tbxUsername.SelectionStart = selectionStart + Clipboard.GetText().Length;
+            }
+        }
+
+        private void SelectAllText(object sender, EventArgs e)
+        {
+            tbxUsername.SelectAll();
         }
     }
 }
