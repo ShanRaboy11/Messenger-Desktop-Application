@@ -598,16 +598,17 @@
             // 
             // contextForms3
             // 
+            contextForms3.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
             contextForms3.Items.AddRange(new ToolStripItem[] { closeToolStripMenuItem, maximizeToolStripMenuItem, minimizeToolStripMenuItem });
             contextForms3.Name = "contextMenuStrip1";
-            contextForms3.Size = new Size(127, 70);
+            contextForms3.Size = new Size(131, 70);
             // 
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
             closeToolStripMenuItem.Image = Properties.Resources.close_window;
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(126, 22);
+            closeToolStripMenuItem.Size = new Size(130, 22);
             closeToolStripMenuItem.Text = "Close";
             closeToolStripMenuItem.Click += Close;
             // 
@@ -616,7 +617,7 @@
             maximizeToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
             maximizeToolStripMenuItem.Image = Properties.Resources.maximise;
             maximizeToolStripMenuItem.Name = "maximizeToolStripMenuItem";
-            maximizeToolStripMenuItem.Size = new Size(126, 22);
+            maximizeToolStripMenuItem.Size = new Size(130, 22);
             maximizeToolStripMenuItem.Text = "Maximize";
             maximizeToolStripMenuItem.Click += Maximize;
             // 
@@ -625,7 +626,7 @@
             minimizeToolStripMenuItem.Font = new Font("Helvetica Neue", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 204);
             minimizeToolStripMenuItem.Image = Properties.Resources.window_minimize;
             minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
-            minimizeToolStripMenuItem.Size = new Size(126, 22);
+            minimizeToolStripMenuItem.Size = new Size(130, 22);
             minimizeToolStripMenuItem.Text = "Minimize";
             minimizeToolStripMenuItem.Click += Minimize;
             // 

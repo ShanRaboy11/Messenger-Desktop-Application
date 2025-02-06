@@ -73,6 +73,36 @@ namespace Messenger_Desktop_Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bigfemale_profile {
+            get {
+                object obj = ResourceManager.GetObject("bigfemale_profile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bigmale_profile {
+            get {
+                object obj = ResourceManager.GetObject("bigmale_profile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap biguser_profile {
+            get {
+                object obj = ResourceManager.GetObject("biguser_profile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_window {
             get {
                 object obj = ResourceManager.GetObject("close-window", resourceCulture);

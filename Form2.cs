@@ -168,14 +168,17 @@ namespace Messenger_Desktop_Application
                 if (gender == "Male")
                 {
                     pbMessagePic.Image = Resources.male_profilepicture;
+                    pbBiggerPhoto.Image = Resources.bigmale_profile;
                 }
                 else if (gender == "Female")
                 {
                     pbMessagePic.Image = Resources.female_profilepicture;
+                    pbBiggerPhoto.Image = Resources.bigfemale_profile;
                 }
                 else
                 {
                     pbMessagePic.Image = Resources.notsay_profilepicture;
+                    pbBiggerPhoto.Image = Resources.biguser_profile;
                 }
 
                 // Make chat UI visible
@@ -190,6 +193,13 @@ namespace Messenger_Desktop_Application
                 pbSticker.Visible = true;
                 label3.Visible = true;
                 tbxUserMessage.Visible = true;
+                pbProfile.Visible = true;
+                pbMute.Visible = true;
+                pbSearch.Visible = true;
+                pbBiggerPhoto.Visible = true;
+                lblProfile.Visible = true;
+                lblSearch.Visible = true;
+                lblMute.Visible = true;
 
                 // Pass the foundUser to LoadMessages directly
                 string selectedUsername = $"{foundUser[0]} {foundUser[1]}";
@@ -217,7 +227,7 @@ namespace Messenger_Desktop_Application
             tbxUserMessage.Clear();
         }
 
-        private void SendMessage(string sender, string receiver, string message)
+        private void SendMessage(string sender, string receiver, string message, string imagePath = null)
         {
             string filePath = AppContext.BaseDirectory + "Messages.txt";
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
@@ -227,12 +237,12 @@ namespace Messenger_Desktop_Application
             {
                 using (StreamWriter sw = new StreamWriter(filePath, true))
                 {
-                    sw.WriteLine($"{sender},{receiver},{timestamp},{message}");
+                    sw.WriteLine($"{sender},{receiver},{timestamp},{message},{imagePath}");
                 }
             }
 
             // Update UI with new message
-            DisplayMessage(sender, message, timestamp, insertAtTop: true);
+            DisplayMessage(sender, message, timestamp, imagePath, insertAtTop: true);
         }
 
 
@@ -276,15 +286,12 @@ namespace Messenger_Desktop_Application
                 string content = data[1];
                 string timestamp = data[2];
 
+                // Display each message correctly based on sender
                 DisplayMessage(sender, content, timestamp, insertAtTop: false); // Show latest messages at bottom
             }
         }
 
-
-
-
-
-        private void DisplayMessage(string sender, string message, string timestamp, bool insertAtTop = true)
+        private void DisplayMessage(string sender, string message, string timestamp, string imagePath = null, bool insertAtTop = true)
         {
             FlowLayoutPanel messagePanel = new FlowLayoutPanel
             {
@@ -292,8 +299,7 @@ namespace Messenger_Desktop_Application
                 WrapContents = false,
                 Padding = new Padding(5),
                 Margin = new Padding(5),
-                MaximumSize = new Size(flipChatMessage.Width - 20, 0),
-                BackColor = sender == currentUser ? Color.LightBlue : Color.LightGray,
+                MaximumSize = new Size(flipChatMessage.Width - 20, 0)
             };
 
             Label lblMessage = new Label
@@ -301,30 +307,66 @@ namespace Messenger_Desktop_Application
                 AutoSize = true,
                 MaximumSize = new Size(flipChatMessage.Width - 80, 0),
                 Padding = new Padding(10),
-                Text = sender == currentUser ? $"You [{timestamp}]:\n{message}" : $"{sender} [{timestamp}]:\n{message}",
                 ForeColor = Color.Black,
                 BorderStyle = BorderStyle.None
             };
 
-            messagePanel.Controls.Add(lblMessage);
-
-            if (insertAtTop)
+            if (sender == currentUser)
             {
-                flipChatMessage.Controls.Add(messagePanel); // Add new messages at the top
-                flipChatMessage.Controls.SetChildIndex(messagePanel, 0); // Moves it to the top
+                messagePanel.BackColor = Color.LightBlue;
+                lblMessage.Text = $"You [{timestamp}]:\n{message}";
             }
             else
             {
-                flipChatMessage.Controls.Add(messagePanel); // Add at the bottom for initial loading
+                messagePanel.BackColor = Color.LightGray;
+                lblMessage.Text = $"{sender} [{timestamp}]:\n{message}";
             }
 
-            // Scroll to bottom to show latest messages
-            //flipChatMessage.VerticalScroll.Value = flipChatMessage.VerticalScroll.Maximum;
+            messagePanel.Controls.Add(lblMessage);
+
+            // Add Image if exists
+            if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+            {
+                PictureBox pbMessageImage = new PictureBox
+                {
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    Size = new Size(150, 150),
+                    Image = Image.FromFile(imagePath),
+                    Margin = new Padding(5)
+                };
+                messagePanel.Controls.Add(pbMessageImage);
+            }
+
+            if (insertAtTop)
+            {
+                flipChatMessage.Controls.Add(messagePanel);
+                flipChatMessage.Controls.SetChildIndex(messagePanel, 0);
+            }
+            else
+            {
+                flipChatMessage.Controls.Add(messagePanel);
+            }
+
             flipChatMessage.ScrollControlIntoView(flipChatMessage.Controls[flipChatMessage.Controls.Count - 1]);
             flipChatMessage.PerformLayout();
         }
 
 
+        private void pbImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.png;*.jpeg;*.gif;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = openFileDialog.FileName;
+                    string senderName = currentUser;
+                    string receiverName = lblUserMessage.Text;
+
+                    SendMessage(senderName, receiverName, "", imagePath);
+                }
+            }
+        }
 
         private string GetUsernameFromFullName(string fullName)
         {
