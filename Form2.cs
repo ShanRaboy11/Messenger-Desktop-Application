@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ReaLTaiizor.Controls;
 
 namespace Messenger_Desktop_Application
 {
@@ -146,7 +147,7 @@ namespace Messenger_Desktop_Application
                 foundUser.Add(userInfo[2]);
 
                 lblUserMessage.Text = foundUser[0] + " " + foundUser[1];
-
+                lblBigName.Text = foundUser[0] + " " + foundUser[1];
                 gender = foundUser[2];
                 if (gender == "Male")
                 {
@@ -173,6 +174,7 @@ namespace Messenger_Desktop_Application
                 pbGIF.Visible = true;
                 pbImages.Visible = true;
                 pbPlus.Visible = true;
+                richTextBoxEdit2.Visible = true;
                 pbSticker.Visible = true;
                 label3.Visible = true;
                 tbxUserMessage.Visible = true;
@@ -180,9 +182,13 @@ namespace Messenger_Desktop_Application
                 pbMute.Visible = true;
                 pbSearch.Visible = true;
                 pbBiggerPhoto.Visible = true;
+                pbCall.Visible = true;
+                pbVid.Visible = true;
+                pbInfo.Visible = true;
                 lblProfile.Visible = true;
                 lblSearchConvo.Visible = true;
                 lblMute.Visible = true;
+                lblBigName.Visible = true;
 
                 // Pass the foundUser to LoadMessages directly
                 string selectedUsername = $"{foundUser[0]} {foundUser[1]}";
@@ -365,9 +371,11 @@ namespace Messenger_Desktop_Application
             lblNotFound.ForeColor = Color.White;
             lblProfile.ForeColor = Color.White;
             lblSearchConvo.ForeColor = Color.White;
+            lblBigName.ForeColor = Color.White;
             lblUserMessage.Visible = false;
             lblNewName.Visible = true;
             lblNewName.Text = receiver;
+            lblBigName.Text = receiver;
             pictureBox1.Image = Resources.white_note1;
             pictureBox2.Image = Resources.white_threedots;
             pbMute.Image = Resources.white_bell;
@@ -414,6 +422,8 @@ namespace Messenger_Desktop_Application
             lblNotFound.ForeColor = Color.Black;
             lblProfile.ForeColor = Color.Black;
             lblSearchConvo.ForeColor = Color.Black;
+            lblBigName.ForeColor = Color.Black;
+            lblBigName.Text = receiver;
             lblUserMessage.Visible = true;
             lblNewName.Visible = false;
             pictureBox1.Image = Resources.notes;
