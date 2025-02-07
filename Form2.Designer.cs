@@ -92,7 +92,6 @@
             pbSticker = new PictureBox();
             pbImages = new PictureBox();
             pbPlus = new PictureBox();
-            pbLike = new PictureBox();
             flipChatMessage = new FlowLayoutPanel();
             contextMenuStrip1 = new ContextMenuStrip(components);
             viewToolStripMenuItem = new ToolStripMenuItem();
@@ -100,6 +99,7 @@
             saveToolStripMenuItem = new ToolStripMenuItem();
             panelBG = new Panel();
             pnlMessage = new Panel();
+            pbLike = new PictureBox();
             pnlBackground = new Panel();
             pbInfo = new PictureBox();
             pbVid = new PictureBox();
@@ -126,8 +126,9 @@
             ((System.ComponentModel.ISupportInitialize)pbSticker).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbImages).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPlus).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbLike).BeginInit();
             contextMenuStrip1.SuspendLayout();
+            pnlMessage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLike).BeginInit();
             pnlBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbInfo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbVid).BeginInit();
@@ -809,18 +810,6 @@
             pbPlus.TabStop = false;
             pbPlus.Visible = false;
             // 
-            // pbLike
-            // 
-            pbLike.Cursor = Cursors.Hand;
-            pbLike.Image = Properties.Resources.like__1_;
-            pbLike.Location = new Point(849, 579);
-            pbLike.Name = "pbLike";
-            pbLike.Size = new Size(26, 24);
-            pbLike.TabIndex = 51;
-            pbLike.TabStop = false;
-            pbLike.Visible = false;
-            pbLike.Click += btnSendMessage_Click;
-            // 
             // flipChatMessage
             // 
             flipChatMessage.AutoScroll = true;
@@ -870,10 +859,24 @@
             // pnlMessage
             // 
             pnlMessage.BackColor = SystemColors.Control;
+            pnlMessage.Controls.Add(pbLike);
             pnlMessage.Location = new Point(282, 565);
             pnlMessage.Name = "pnlMessage";
             pnlMessage.Size = new Size(613, 100);
             pnlMessage.TabIndex = 54;
+            // 
+            // pbLike
+            // 
+            pbLike.Cursor = Cursors.Hand;
+            pbLike.Image = Properties.Resources.like__1_;
+            pbLike.Location = new Point(563, 10);
+            pbLike.Name = "pbLike";
+            pbLike.Size = new Size(34, 34);
+            pbLike.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbLike.TabIndex = 0;
+            pbLike.TabStop = false;
+            pbLike.Visible = false;
+            pbLike.Click += btnSendMessage_Click;
             // 
             // pnlBackground
             // 
@@ -955,17 +958,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1148, 639);
             ContextMenuStrip = contextForm2;
+            Controls.Add(label3);
             Controls.Add(lblUserMessage);
             Controls.Add(menuStrip1);
             Controls.Add(panel1);
             Controls.Add(pnlSide);
             Controls.Add(flipChatMessage);
-            Controls.Add(pbLike);
             Controls.Add(pbPlus);
             Controls.Add(pbImages);
             Controls.Add(pbSticker);
             Controls.Add(pbGIF);
-            Controls.Add(label3);
             Controls.Add(tbxUserMessage);
             Controls.Add(richTextBoxEdit2);
             Controls.Add(panel2);
@@ -1005,8 +1007,9 @@
             ((System.ComponentModel.ISupportInitialize)pbSticker).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbImages).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbPlus).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbLike).EndInit();
             contextMenuStrip1.ResumeLayout(false);
+            pnlMessage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbLike).EndInit();
             pnlBackground.ResumeLayout(false);
             pnlBackground.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbInfo).EndInit();
@@ -1069,7 +1072,6 @@
         private PictureBox pbGIF;
         private PictureBox pbImages;
         private PictureBox pbPlus;
-        private PictureBox pbLike;
         private FlowLayoutPanel flipChatMessage;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem viewToolStripMenuItem;
@@ -1099,6 +1101,7 @@
         private PictureBox pbCall;
         private PictureBox pbInfo;
         private PictureBox pbVid;
+        private PictureBox pbLike;
         //private ContextMenuStrip contextForms2;
     }
 }

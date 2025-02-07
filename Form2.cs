@@ -148,6 +148,7 @@ namespace Messenger_Desktop_Application
 
                 lblUserMessage.Text = foundUser[0] + " " + foundUser[1];
                 lblBigName.Text = foundUser[0] + " " + foundUser[1];
+
                 gender = foundUser[2];
                 if (gender == "Male")
                 {
@@ -174,7 +175,6 @@ namespace Messenger_Desktop_Application
                 pbGIF.Visible = true;
                 pbImages.Visible = true;
                 pbPlus.Visible = true;
-                richTextBoxEdit2.Visible = true;
                 pbSticker.Visible = true;
                 label3.Visible = true;
                 tbxUserMessage.Visible = true;
@@ -182,9 +182,6 @@ namespace Messenger_Desktop_Application
                 pbMute.Visible = true;
                 pbSearch.Visible = true;
                 pbBiggerPhoto.Visible = true;
-                pbCall.Visible = true;
-                pbVid.Visible = true;
-                pbInfo.Visible = true;
                 lblProfile.Visible = true;
                 lblSearchConvo.Visible = true;
                 lblMute.Visible = true;
@@ -453,7 +450,7 @@ namespace Messenger_Desktop_Application
                 pbMessagePic.Image = Resources.notsay_profilepicture;
                 pbProfilePic.Image = Resources.notsay_profilepicture;
             }
-            darkModeToolStripMenuItem.Image = Resources.check_icon;
+            lightModeToolStripMenuItem.Image = Resources.check_icon;
             lightModeToolStripMenuItem.Enabled = false;
             darkModeToolStripMenuItem.Image = null;
             darkModeToolStripMenuItem.Enabled = true;

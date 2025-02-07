@@ -91,25 +91,23 @@ namespace Messenger_Desktop_Application
             using (StreamReader sr = new StreamReader(filePath))
             {
                 string line;
-                while ((line = sr.ReadLine()) != null) // Read file line by line
+                while ((line = sr.ReadLine()) != null) 
                 {
-                    string[] data = line.Split(','); // Assume CSV format: username,password,...
+                    string[] data = line.Split(',');
 
-                    // Ensure the line has at least two values (username & password)
                     if (data.Length >= 4)
                     {
-                        string storedUsername = data[2].Trim(); // First column: username
-                        string storedPassword = data[3].Trim(); // Second column: password
+                        string storedUsername = data[2].Trim(); 
+                        string storedPassword = data[3].Trim();
 
-                        // Check if the credentials match
                         if (storedUsername == username && storedPassword == password)
                         {
-                            return 1; // Match found, return success
+                            return 1; 
                         }
                     }
                 }
             }
-            return 0; // No match found
+            return 0;
         }
 
         private void CopyText(object sender, EventArgs e)
