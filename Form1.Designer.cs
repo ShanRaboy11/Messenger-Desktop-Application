@@ -68,7 +68,7 @@
             // 
             userPass.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             userPass.AutoSize = true;
-            userPass.BackColor = Color.White;
+            userPass.BackColor = SystemColors.Control;
             userPass.Cursor = Cursors.IBeam;
             userPass.Font = new Font("Helvetica Neue", 10.999999F);
             userPass.ForeColor = Color.DimGray;
@@ -83,7 +83,7 @@
             // 
             userName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             userName.AutoSize = true;
-            userName.BackColor = Color.White;
+            userName.BackColor = SystemColors.Control;
             userName.Cursor = Cursors.IBeam;
             userName.Font = new Font("Helvetica Neue", 10.999999F);
             userName.ForeColor = Color.DimGray;
@@ -324,9 +324,9 @@
             // 
             richTextBoxEdit1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             richTextBoxEdit1.AutoWordSelection = false;
-            richTextBoxEdit1.BackColor = Color.Transparent;
+            richTextBoxEdit1.BackColor = Color.White;
             richTextBoxEdit1.BackgroundImageLayout = ImageLayout.Center;
-            richTextBoxEdit1.BaseColor = Color.Transparent;
+            richTextBoxEdit1.BaseColor = Color.White;
             richTextBoxEdit1.BorderColor = Color.FromArgb(180, 180, 180);
             richTextBoxEdit1.EdgeColor = Color.White;
             richTextBoxEdit1.Enabled = false;
@@ -347,7 +347,7 @@
             // tbxPassword
             // 
             tbxPassword.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tbxPassword.BackColor = Color.White;
+            tbxPassword.BackColor = SystemColors.Control;
             tbxPassword.BorderStyle = BorderStyle.None;
             tbxPassword.ContextMenuStrip = contextShortcut;
             tbxPassword.Font = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
@@ -462,7 +462,7 @@
             // tbxUsername
             // 
             tbxUsername.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tbxUsername.BackColor = Color.White;
+            tbxUsername.BackColor = SystemColors.Control;
             tbxUsername.BorderStyle = BorderStyle.None;
             tbxUsername.ContextMenuStrip = contextShortcut;
             tbxUsername.Font = new Font("Helvetica Neue", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);

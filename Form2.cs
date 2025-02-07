@@ -109,24 +109,23 @@ namespace Messenger_Desktop_Application
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    string[] data = line.Split(','); // Split line into array
+                    string[] data = line.Split(','); 
 
-                    if (data.Length >= 6) // Ensure there are enough fields
+                    if (data.Length >= 6) 
                     {
                         string firstName = data[0].Trim();
                         string lastName = data[1].Trim();
                         searchedEmail = data[2].Trim();
                         gender = data[7].Trim();
 
-                        // Check if input matches username, first name, or last name
                         if (firstName.ToLower() == input.ToLower() || lastName.ToLower() == input.ToLower())
                         {
-                            return new string[] { firstName, lastName, gender }; // Return user details
+                            return new string[] { firstName, lastName, gender }; 
                         }
                     }
                 }
             }
-            return null; // No match found
+            return null; 
         }
 
         private void tbxSearch(object sender, EventArgs e)
@@ -166,7 +165,6 @@ namespace Messenger_Desktop_Application
                     pbBiggerPhoto.Image = Resources.biguser_profile;
                 }
 
-                // Make chat UI visible
                 flipChatMessage.Visible = true;
                 pnlSide.Visible = true;
                 separator1.Visible = true;
@@ -187,9 +185,8 @@ namespace Messenger_Desktop_Application
                 lblMute.Visible = true;
                 lblBigName.Visible = true;
 
-                // Pass the foundUser to LoadMessages directly
                 string selectedUsername = $"{foundUser[0]} {foundUser[1]}";
-                LoadMessages(currentUser, selectedUsername);  // Pass the full name instead
+                LoadMessages(currentUser, selectedUsername); 
             }
         }
 
@@ -205,8 +202,8 @@ namespace Messenger_Desktop_Application
             string message = tbxUserMessage.Text.Trim();
             if (string.IsNullOrEmpty(message)) return;
 
-            string senderName = currentUser; // Retrieve from login session
-            string receiverName = lblUserMessage.Text; // Selected user
+            string senderName = currentUser;
+            string receiverName = lblUserMessage.Text;
 
             pbLike.Image = Resources.like__1_;
             SendMessage(senderName, receiverName, message);
@@ -218,7 +215,6 @@ namespace Messenger_Desktop_Application
             string filePath = AppContext.BaseDirectory + "Messages.txt";
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
-            // Use a lock to prevent concurrent file access issues
             lock (filePath)
             {
                 using (StreamWriter sw = new StreamWriter(filePath, true))
@@ -227,19 +223,18 @@ namespace Messenger_Desktop_Application
                 }
             }
 
-            // Update UI with new message
             DisplayMessage(sender, message, timestamp, imagePath, insertAtTop: true);
         }
 
 
         private void LoadMessages(string currentUser, string selectedUser)
         {
-            flipChatMessage.Controls.Clear(); // Clear previous messages
+            flipChatMessage.Controls.Clear();
             string filePath = AppContext.BaseDirectory + "Messages.txt";
 
             if (!File.Exists(filePath)) return;
 
-            List<string> messages = new List<string>(); // Store messages in a list
+            List<string> messages = new List<string>(); 
 
             using (StreamReader sr = new StreamReader(filePath))
             {
@@ -254,7 +249,6 @@ namespace Messenger_Desktop_Application
                     string timestamp = data[2].Trim();
                     string content = data[3].Trim();
 
-                    // Check if message is between currentUser and selectedUser
                     if ((sender == currentUser && receiver == selectedUser) ||
                         (sender == selectedUser && receiver == currentUser))
                     {
@@ -264,7 +258,6 @@ namespace Messenger_Desktop_Application
                 }
             }
 
-            // Display messages in reverse order (newest at the bottom)
             for (int i = messages.Count - 1; i >= 0; i--)
             {
                 string[] data = messages[i].Split(',');
@@ -272,8 +265,7 @@ namespace Messenger_Desktop_Application
                 string content = data[1];
                 string timestamp = data[2];
 
-                // Display each message correctly based on sender
-                DisplayMessage(sender, content, timestamp, insertAtTop: false); // Show latest messages at bottom
+                DisplayMessage(sender, content, timestamp, insertAtTop: false); 
             }
         }
 
@@ -531,8 +523,8 @@ namespace Messenger_Desktop_Application
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Prevents the default "ding" sound
-                searchUser(this, EventArgs.Empty); // Simulate clicking the Send button
+                e.SuppressKeyPress = true; 
+                searchUser(this, EventArgs.Empty);
             }
         }
     }

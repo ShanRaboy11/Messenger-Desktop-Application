@@ -180,7 +180,7 @@
             // lblFirst
             // 
             lblFirst.AutoSize = true;
-            lblFirst.BackColor = Color.White;
+            lblFirst.BackColor = SystemColors.Control;
             lblFirst.Cursor = Cursors.IBeam;
             lblFirst.Font = new Font("Helvetica Neue", 10.999999F);
             lblFirst.ForeColor = Color.DimGray;
@@ -193,7 +193,7 @@
             // 
             // userCFirstName
             // 
-            userCFirstName.BackColor = Color.White;
+            userCFirstName.BackColor = SystemColors.Control;
             userCFirstName.BorderStyle = BorderStyle.None;
             userCFirstName.Font = new Font("Helvetica Neue", 11F);
             userCFirstName.ForeColor = Color.Black;
@@ -206,7 +206,7 @@
             // lblLast
             // 
             lblLast.AutoSize = true;
-            lblLast.BackColor = Color.White;
+            lblLast.BackColor = SystemColors.Control;
             lblLast.Cursor = Cursors.IBeam;
             lblLast.Font = new Font("Helvetica Neue", 10.999999F);
             lblLast.ForeColor = Color.DimGray;
@@ -219,7 +219,7 @@
             // 
             // userCLastName
             // 
-            userCLastName.BackColor = Color.White;
+            userCLastName.BackColor = SystemColors.Control;
             userCLastName.BorderStyle = BorderStyle.None;
             userCLastName.Font = new Font("Helvetica Neue", 11F);
             userCLastName.ForeColor = Color.Black;
@@ -232,7 +232,7 @@
             // lblPass
             // 
             lblPass.AutoSize = true;
-            lblPass.BackColor = Color.White;
+            lblPass.BackColor = SystemColors.Control;
             lblPass.Cursor = Cursors.IBeam;
             lblPass.Font = new Font("Helvetica Neue", 10.999999F);
             lblPass.ForeColor = Color.DimGray;
@@ -245,7 +245,7 @@
             // 
             // userCPassword
             // 
-            userCPassword.BackColor = Color.White;
+            userCPassword.BackColor = SystemColors.Control;
             userCPassword.BorderStyle = BorderStyle.None;
             userCPassword.Font = new Font("Helvetica Neue", 11F);
             userCPassword.ForeColor = Color.Black;
@@ -260,7 +260,7 @@
             // lblEmail
             // 
             lblEmail.AutoSize = true;
-            lblEmail.BackColor = Color.White;
+            lblEmail.BackColor = SystemColors.Control;
             lblEmail.Cursor = Cursors.IBeam;
             lblEmail.Font = new Font("Helvetica Neue", 10.999999F);
             lblEmail.ForeColor = Color.DimGray;
@@ -273,7 +273,7 @@
             // 
             // userCEmail
             // 
-            userCEmail.BackColor = Color.White;
+            userCEmail.BackColor = SystemColors.Control;
             userCEmail.BorderStyle = BorderStyle.None;
             userCEmail.Font = new Font("Helvetica Neue", 11F);
             userCEmail.ForeColor = Color.Black;
@@ -350,7 +350,7 @@
             // rbtnFemale
             // 
             rbtnFemale.AutoSize = true;
-            rbtnFemale.BackColor = Color.White;
+            rbtnFemale.BackColor = SystemColors.Control;
             rbtnFemale.CheckedColor = Color.FromArgb(64, 158, 255);
             rbtnFemale.DisabledColor = Color.FromArgb(196, 198, 202);
             rbtnFemale.DisabledStringColor = Color.FromArgb(186, 187, 189);
@@ -371,7 +371,7 @@
             // rbtnMale
             // 
             rbtnMale.AutoSize = true;
-            rbtnMale.BackColor = Color.White;
+            rbtnMale.BackColor = SystemColors.Control;
             rbtnMale.CheckedColor = Color.FromArgb(64, 158, 255);
             rbtnMale.DisabledColor = Color.FromArgb(196, 198, 202);
             rbtnMale.DisabledStringColor = Color.FromArgb(186, 187, 189);
@@ -392,7 +392,7 @@
             // rbtnNotSay
             // 
             rbtnNotSay.AutoSize = true;
-            rbtnNotSay.BackColor = Color.White;
+            rbtnNotSay.BackColor = SystemColors.Control;
             rbtnNotSay.CheckedColor = Color.FromArgb(64, 158, 255);
             rbtnNotSay.DisabledColor = Color.FromArgb(196, 198, 202);
             rbtnNotSay.DisabledStringColor = Color.FromArgb(186, 187, 189);

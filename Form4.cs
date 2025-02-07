@@ -72,7 +72,7 @@ namespace Messenger_Desktop_Application
                     {
                         string firstName = data[0].Trim();
                         string lastName = data[1].Trim();
-                        string email = data[2].Trim();
+                        string email = data[2].Trim();  
                         string password = data[3].Trim();
                         string birthMonth = data[4].Trim();
                         string birthDate = data[5].Trim();
