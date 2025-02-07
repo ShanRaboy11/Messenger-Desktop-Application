@@ -23,50 +23,56 @@ namespace Messenger_Desktop_Application
         private void signedUpSuccessfully(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(userCFirstName.Text) ||
-                 string.IsNullOrWhiteSpace(userCLastName.Text) ||
-                 string.IsNullOrWhiteSpace(userCEmail.Text) ||
-                  string.IsNullOrWhiteSpace(userCPassword.Text) ||
-                  string.IsNullOrWhiteSpace(birthMonth.Text) ||
-                  string.IsNullOrWhiteSpace(birthDay.Text) ||
-                  string.IsNullOrWhiteSpace(birthYear.Text) ||
-                  (!rbtnFemale.Checked && !rbtnMale.Checked && !rbtnNotSay.Checked)) // Ensure a gender is selected
+                string.IsNullOrWhiteSpace(userCLastName.Text) ||
+                string.IsNullOrWhiteSpace(userCEmail.Text) ||
+                string.IsNullOrWhiteSpace(userCPassword.Text) ||
+                string.IsNullOrWhiteSpace(birthMonth.Text) ||
+                string.IsNullOrWhiteSpace(birthDay.Text) ||
+                string.IsNullOrWhiteSpace(birthYear.Text) ||
+                (!rbtnFemale.Checked && !rbtnMale.Checked && !rbtnNotSay.Checked))
             {
-                MessageBox.Show("Please fill in all required fields before signing up.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please fill in all required fields before signing up.",
+                                "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            personalInformation.Add(userCFirstName.Text);
-            personalInformation.Add(userCLastName.Text);
-            personalInformation.Add(userCEmail.Text);
-            personalInformation.Add(userCPassword.Text);
-            personalInformation.Add(birthMonth.Text);
-            personalInformation.Add(birthDay.Text);
-            personalInformation.Add(birthYear.Text);
-            if (rbtnFemale.Checked)
+            if (!int.TryParse(birthYear.Text, out int birthYearValue))
             {
-                personalInformation.Add(rbtnFemale.Text);
+                MessageBox.Show("Invalid birth year. Please enter a valid number.",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else if (rbtnMale.Checked)
+
+            if (birthYearValue > 2012)
             {
-                personalInformation.Add(rbtnMale.Text);
-            }
-            else if (rbtnNotSay.Checked)
-            {
-                personalInformation.Add(rbtnNotSay.Text);
-            }
-            personalInformation.Add("Public");
-            if (int.Parse(birthYear.Text) <= 2012)
-            {
-                MessageBox.Show("Signed up Successfully! \n\nWelcome to Messenger!",
-                                                 "Success", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-                saveAccount(personalInformation);
-                this.Close();
-            }
-            else
                 MessageBox.Show("Age Restriction\n\nUser must be at least 13 years old to use Messenger.",
-                                                 "Sign-up Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        
-    }
+                                "Sign-up Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            List<string> userInfo = new List<string>
+             {
+                userCFirstName.Text,
+                userCLastName.Text,
+                userCEmail.Text,
+                userCPassword.Text,
+                birthMonth.Text,
+                birthDay.Text,
+                 birthYear.Text,
+                (rbtnFemale.Checked ? rbtnFemale.Text : rbtnMale.Checked ? rbtnMale.Text : rbtnNotSay.Text),
+                "Public"
+             };
+
+            // Save user information once
+            personalInformation.AddRange(userInfo);
+
+            MessageBox.Show("Signed up Successfully! \n\nWelcome to Messenger!",
+                            "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            saveAccount(personalInformation);
+            this.Close();
+        }
+
 
         private void userFirstName(object sender, EventArgs e)
         {
@@ -115,8 +121,9 @@ namespace Messenger_Desktop_Application
             string filePath = AppContext.BaseDirectory + "Accounts.txt";
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
-                writer.WriteLine(string.Join(",", information));
+                writer.WriteLine(string.Join(", ", information)); 
             }
         }
+
     }
 }
