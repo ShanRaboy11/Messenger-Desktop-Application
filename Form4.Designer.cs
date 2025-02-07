@@ -35,17 +35,25 @@
             button3 = new Button();
             button2 = new Button();
             button6 = new Button();
-            pictureBox1 = new PictureBox();
-            UserName = new Label();
+            pbProfileImage = new PictureBox();
+            lblFullName = new Label();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             pictureBox2 = new PictureBox();
             label5 = new Label();
+            lblEmail = new Label();
+            lblGender = new Label();
+            lblBirthdate = new Label();
+            lblPassword = new Label();
+            label6 = new Label();
+            lblPrivacy = new Label();
+            pictureBox3 = new PictureBox();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbProfileImage).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -60,7 +68,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(416, 26);
+            panel1.Size = new Size(374, 26);
             panel1.TabIndex = 28;
             // 
             // button4
@@ -144,63 +152,63 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += Close;
             // 
-            // pictureBox1
+            // pbProfileImage
             // 
-            pictureBox1.Image = Properties.Resources.bigmale_profile;
-            pictureBox1.Location = new Point(158, 49);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(80, 69);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.TabIndex = 29;
-            pictureBox1.TabStop = false;
+            pbProfileImage.Image = Properties.Resources.bigmale_profile;
+            pbProfileImage.Location = new Point(143, 52);
+            pbProfileImage.Name = "pbProfileImage";
+            pbProfileImage.Size = new Size(80, 69);
+            pbProfileImage.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbProfileImage.TabIndex = 29;
+            pbProfileImage.TabStop = false;
             // 
-            // UserName
+            // lblFullName
             // 
-            UserName.AutoSize = true;
-            UserName.Font = new Font("Helvetica Neue", 17.75F, FontStyle.Bold);
-            UserName.Location = new Point(84, 132);
-            UserName.Name = "UserName";
-            UserName.Size = new Size(249, 27);
-            UserName.TabIndex = 30;
-            UserName.Text = "Shan Michael Raboy";
+            lblFullName.Font = new Font("Helvetica Neue", 17.75F, FontStyle.Bold);
+            lblFullName.Location = new Point(59, 135);
+            lblFullName.Name = "lblFullName";
+            lblFullName.Size = new Size(249, 27);
+            lblFullName.TabIndex = 30;
+            lblFullName.Text = "Shan Michael Raboy";
+            lblFullName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Helvetica Neue", 11.9999981F);
-            label1.Location = new Point(28, 193);
+            label1.Font = new Font("Helvetica Neue", 13.9999981F);
+            label1.Location = new Point(70, 201);
             label1.Name = "label1";
-            label1.Size = new Size(58, 18);
+            label1.Size = new Size(72, 21);
             label1.TabIndex = 31;
             label1.Text = "E-mail: ";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Helvetica Neue", 11.9999981F);
-            label2.Location = new Point(27, 231);
+            label2.Font = new Font("Helvetica Neue", 13.9999981F);
+            label2.Location = new Point(61, 238);
             label2.Name = "label2";
-            label2.Size = new Size(67, 18);
+            label2.Size = new Size(81, 21);
             label2.TabIndex = 32;
             label2.Text = "Gender: ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Helvetica Neue", 11.9999981F);
-            label3.Location = new Point(27, 269);
+            label3.Font = new Font("Helvetica Neue", 13.9999981F);
+            label3.Location = new Point(49, 274);
             label3.Name = "label3";
-            label3.Size = new Size(79, 18);
+            label3.Size = new Size(96, 21);
             label3.TabIndex = 33;
             label3.Text = "Birthdate: ";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Helvetica Neue", 11.9999981F);
-            label4.Location = new Point(28, 309);
+            label4.Font = new Font("Helvetica Neue", 13.9999981F);
+            label4.Location = new Point(43, 307);
             label4.Name = "label4";
-            label4.Size = new Size(85, 18);
+            label4.Size = new Size(102, 21);
             label4.TabIndex = 34;
             label4.Text = "Password: ";
             // 
@@ -208,9 +216,9 @@
             // 
             pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(166, 478);
+            pictureBox2.Location = new Point(148, 416);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(25, 23);
+            pictureBox2.Size = new Size(0, 0);
             pictureBox2.TabIndex = 36;
             pictureBox2.TabStop = false;
             // 
@@ -220,25 +228,102 @@
             label5.AutoSize = true;
             label5.Font = new Font("Helvetica Neue", 12F, FontStyle.Bold);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(191, 481);
+            label5.Location = new Point(173, 419);
             label5.Name = "label5";
             label5.Size = new Size(47, 18);
             label5.TabIndex = 35;
             label5.Text = "Meta";
             // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.Font = new Font("Helvetica Neue", 13.9999981F);
+            lblEmail.Location = new Point(146, 201);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(60, 21);
+            lblEmail.TabIndex = 38;
+            lblEmail.Text = "label6";
+            // 
+            // lblGender
+            // 
+            lblGender.AutoSize = true;
+            lblGender.Font = new Font("Helvetica Neue", 13.9999981F);
+            lblGender.Location = new Point(146, 238);
+            lblGender.Name = "lblGender";
+            lblGender.Size = new Size(60, 21);
+            lblGender.TabIndex = 39;
+            lblGender.Text = "label6";
+            // 
+            // lblBirthdate
+            // 
+            lblBirthdate.AutoSize = true;
+            lblBirthdate.Font = new Font("Helvetica Neue", 13.9999981F);
+            lblBirthdate.Location = new Point(146, 274);
+            lblBirthdate.Name = "lblBirthdate";
+            lblBirthdate.Size = new Size(60, 21);
+            lblBirthdate.TabIndex = 40;
+            lblBirthdate.Text = "label6";
+            // 
+            // lblPassword
+            // 
+            lblPassword.AutoSize = true;
+            lblPassword.Font = new Font("Helvetica Neue", 13.9999981F);
+            lblPassword.Location = new Point(146, 307);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(60, 21);
+            lblPassword.TabIndex = 41;
+            lblPassword.Text = "label6";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Helvetica Neue", 13.9999981F);
+            label6.Location = new Point(64, 339);
+            label6.Name = "label6";
+            label6.Size = new Size(75, 21);
+            label6.TabIndex = 43;
+            label6.Text = "Privacy:";
+            // 
+            // lblPrivacy
+            // 
+            lblPrivacy.AutoSize = true;
+            lblPrivacy.Font = new Font("Helvetica Neue", 13.9999981F);
+            lblPrivacy.Location = new Point(146, 339);
+            lblPrivacy.Name = "lblPrivacy";
+            lblPrivacy.Size = new Size(60, 21);
+            lblPrivacy.TabIndex = 44;
+            lblPrivacy.Text = "label6";
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(149, 416);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(25, 23);
+            pictureBox3.TabIndex = 45;
+            pictureBox3.TabStop = false;
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 13F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(416, 525);
+            ClientSize = new Size(374, 456);
+            Controls.Add(pictureBox3);
+            Controls.Add(lblPrivacy);
+            Controls.Add(label6);
+            Controls.Add(lblPassword);
+            Controls.Add(lblBirthdate);
+            Controls.Add(lblGender);
+            Controls.Add(lblEmail);
             Controls.Add(pictureBox2);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(UserName);
-            Controls.Add(pictureBox1);
+            Controls.Add(lblFullName);
+            Controls.Add(pbProfileImage);
             Controls.Add(panel1);
             Font = new Font("Helvetica Neue", 8.999999F, FontStyle.Regular, GraphicsUnit.Point, 204);
             FormBorderStyle = FormBorderStyle.None;
@@ -247,8 +332,9 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Profile";
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbProfileImage).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -261,13 +347,20 @@
         private Button button3;
         private Button button2;
         private Button button6;
-        private PictureBox pictureBox1;
-        private Label UserName;
+        private PictureBox pbProfileImage;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private PictureBox pictureBox2;
         private Label label5;
+        private Label lblFullName;
+        private Label lblEmail;
+        private Label lblGender;
+        private Label lblBirthdate;
+        private Label lblPassword;
+        private Label label6;
+        private Label lblPrivacy;
+        private PictureBox pictureBox3;
     }
 }

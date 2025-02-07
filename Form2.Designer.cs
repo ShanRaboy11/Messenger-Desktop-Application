@@ -73,6 +73,7 @@
             menuStrip1 = new MenuStrip();
             profileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem2 = new ToolStripMenuItem();
+            viewProfileToolStripMenuItem = new ToolStripMenuItem();
             settingsToolStripMenuItem = new ToolStripMenuItem();
             themeToolStripMenuItem = new ToolStripMenuItem();
             darkModeToolStripMenuItem = new ToolStripMenuItem();
@@ -101,7 +102,6 @@
             pnlBackground = new Panel();
             lblNewName = new Label();
             pbMessagePic = new PictureBox();
-            viewProfileToolStripMenuItem = new ToolStripMenuItem();
             pnlSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbMute).BeginInit();
@@ -246,6 +246,7 @@
             pbProfile.TabIndex = 0;
             pbProfile.TabStop = false;
             pbProfile.Visible = false;
+            pbProfile.Click += viewUserProfile;
             // 
             // panel2
             // 
@@ -303,6 +304,7 @@
             tbxSUser.Size = new Size(206, 17);
             tbxSUser.TabIndex = 42;
             tbxSUser.Click += tbxSearch;
+            tbxSUser.KeyDown += tbxSUser_KeyDown;
             // 
             // label2
             // 
@@ -585,7 +587,6 @@
             menuStrip1.Size = new Size(1148, 24);
             menuStrip1.TabIndex = 7;
             menuStrip1.Text = "menuStrip1";
-            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // profileToolStripMenuItem
             // 
@@ -598,9 +599,17 @@
             // 
             logoutToolStripMenuItem2.Image = Properties.Resources._3005766_account_door_exit_logout_icon;
             logoutToolStripMenuItem2.Name = "logoutToolStripMenuItem2";
-            logoutToolStripMenuItem2.Size = new Size(180, 22);
+            logoutToolStripMenuItem2.Size = new Size(143, 22);
             logoutToolStripMenuItem2.Text = "Logout";
             logoutToolStripMenuItem2.Click += userLogout;
+            // 
+            // viewProfileToolStripMenuItem
+            // 
+            viewProfileToolStripMenuItem.Image = Properties.Resources.profile_black;
+            viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
+            viewProfileToolStripMenuItem.Size = new Size(143, 22);
+            viewProfileToolStripMenuItem.Text = "View Profile";
+            viewProfileToolStripMenuItem.Click += ViewProfile;
             // 
             // settingsToolStripMenuItem
             // 
@@ -619,14 +628,16 @@
             // darkModeToolStripMenuItem
             // 
             darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
-            darkModeToolStripMenuItem.Size = new Size(141, 22);
+            darkModeToolStripMenuItem.Size = new Size(180, 22);
             darkModeToolStripMenuItem.Text = "Dark Mode";
             darkModeToolStripMenuItem.Click += DarkMode;
             // 
             // lightModeToolStripMenuItem
             // 
+            lightModeToolStripMenuItem.Enabled = false;
+            lightModeToolStripMenuItem.Image = Properties.Resources.check_icon;
             lightModeToolStripMenuItem.Name = "lightModeToolStripMenuItem";
-            lightModeToolStripMenuItem.Size = new Size(141, 22);
+            lightModeToolStripMenuItem.Size = new Size(180, 22);
             lightModeToolStripMenuItem.Text = "Light Mode";
             lightModeToolStripMenuItem.Click += LightMode;
             // 
@@ -639,15 +650,19 @@
             // 
             // publicToolStripMenuItem
             // 
+            publicToolStripMenuItem.Enabled = false;
+            publicToolStripMenuItem.Image = Properties.Resources.check_icon;
             publicToolStripMenuItem.Name = "publicToolStripMenuItem";
             publicToolStripMenuItem.Size = new Size(116, 22);
             publicToolStripMenuItem.Text = "Public";
+            publicToolStripMenuItem.Click += SetToPublic;
             // 
             // privateToolStripMenuItem
             // 
             privateToolStripMenuItem.Name = "privateToolStripMenuItem";
             privateToolStripMenuItem.Size = new Size(116, 22);
             privateToolStripMenuItem.Text = "Private";
+            privateToolStripMenuItem.Click += SetToPrivate;
             // 
             // lblUserMessage
             // 
@@ -861,9 +876,8 @@
             lblNewName.ForeColor = Color.White;
             lblNewName.Location = new Point(385, 59);
             lblNewName.Name = "lblNewName";
-            lblNewName.Size = new Size(83, 17);
+            lblNewName.Size = new Size(0, 17);
             lblNewName.TabIndex = 9;
-            lblNewName.Text = "Gelo Rivera";
             lblNewName.Visible = false;
             // 
             // pbMessagePic
@@ -876,14 +890,6 @@
             pbMessagePic.SizeMode = PictureBoxSizeMode.CenterImage;
             pbMessagePic.TabIndex = 9;
             pbMessagePic.TabStop = false;
-            // 
-            // viewProfileToolStripMenuItem
-            // 
-            viewProfileToolStripMenuItem.Image = Properties.Resources.profile_black;
-            viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
-            viewProfileToolStripMenuItem.Size = new Size(180, 22);
-            viewProfileToolStripMenuItem.Text = "View Profile";
-            viewProfileToolStripMenuItem.Click += ViewProfile;
             // 
             // Form2
             // 

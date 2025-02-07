@@ -25,25 +25,6 @@ namespace Messenger_Desktop_Application
             }
         }
 
-        private const int WM_NCHITTEST = 0x84;
-        private const int HTBOTTOMRIGHT = 17;
-
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-            if (m.Msg == WM_NCHITTEST)
-            {
-                // Get mouse position
-                Point cursor = PointToClient(Cursor.Position);
-                int gripSize = 10; // Resize corner sensitivity
-
-                if (cursor.X >= this.ClientSize.Width - gripSize && cursor.Y >= this.ClientSize.Height - gripSize)
-                {
-                    m.Result = (IntPtr)HTBOTTOMRIGHT; // Resize from bottom-right corner
-                }
-            }
-        }
-
         private void Maximize(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -95,12 +76,12 @@ namespace Messenger_Desktop_Application
                 messenger.Show();
                 this.Hide();
             }
-            else if(tbxUsername.Text == "" && tbxPassword.Text == "")
+            else if (tbxUsername.Text == "" && tbxPassword.Text == "")
             {
                 MessageBox.Show("Fill in all required fields to login.\nPlease try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show("Incorrect username or password. Please try again.", "Login Failed" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Incorrect username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public int searchCredentials(string username, string password)
@@ -161,6 +142,15 @@ namespace Messenger_Desktop_Application
         private void SelectAllText(object sender, EventArgs e)
         {
             tbxUsername.SelectAll();
+        }
+
+        private void tbxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; 
+                btnLogin(this, EventArgs.Empty);
+            }
         }
     }
 }

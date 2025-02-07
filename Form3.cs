@@ -54,6 +54,7 @@ namespace Messenger_Desktop_Application
             {
                 personalInformation.Add(rbtnNotSay.Text);
             }
+            personalInformation.Add("Public");
             if (int.Parse(birthYear.Text) <= 2012)
             {
                 MessageBox.Show("Signed up Successfully! \n\nWelcome to Messenger!",
