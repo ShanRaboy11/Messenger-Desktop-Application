@@ -31,8 +31,8 @@ namespace Messenger_Desktop_Application
                 }
                 else
                     pbProfileImage.Image = Resources.biguser_profile;
-                lblBirthdate.Text = userInfo[4]; // Birthdate (formatted)
-                lblPassword.Text = new string('*', userInfo[3].Length); // Masked password
+                lblBirthdate.Text = userInfo[4]; 
+                lblPassword.Text = new string('*', userInfo[3].Length);
                 lblPrivacy.Text = userInfo[6];
             }
             else
@@ -81,7 +81,6 @@ namespace Messenger_Desktop_Application
                         string privacy = data[8].Trim();
                         string birthdate = $"{birthMonth} {birthDate}, {birthYear}";
 
-                        // ✅ Fix: Now checking if the email matches
                         if (email.Equals(emailToFind, StringComparison.OrdinalIgnoreCase))
                         {
                             return new string[] { firstName, lastName, email, password, birthdate, gender,privacy };
@@ -89,7 +88,7 @@ namespace Messenger_Desktop_Application
                     }
                 }
             }
-            return null; // No match found
+            return null; 
         }
     }
 }

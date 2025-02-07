@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             pnlSide = new Panel();
+            lblBigName = new Label();
             lblSearchConvo = new Label();
             lblMute = new Label();
             lblProfile = new Label();
@@ -91,7 +92,6 @@
             pbSticker = new PictureBox();
             pbImages = new PictureBox();
             pbPlus = new PictureBox();
-            pbLike = new PictureBox();
             flipChatMessage = new FlowLayoutPanel();
             contextMenuStrip1 = new ContextMenuStrip(components);
             viewToolStripMenuItem = new ToolStripMenuItem();
@@ -99,7 +99,11 @@
             saveToolStripMenuItem = new ToolStripMenuItem();
             panelBG = new Panel();
             pnlMessage = new Panel();
+            pbLike = new PictureBox();
             pnlBackground = new Panel();
+            pbInfo = new PictureBox();
+            pbVid = new PictureBox();
+            pbCall = new PictureBox();
             lblNewName = new Label();
             pbMessagePic = new PictureBox();
             pnlSide.SuspendLayout();
@@ -122,9 +126,13 @@
             ((System.ComponentModel.ISupportInitialize)pbSticker).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbImages).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPlus).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbLike).BeginInit();
             contextMenuStrip1.SuspendLayout();
+            pnlMessage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbLike).BeginInit();
             pnlBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbInfo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbVid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbCall).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbMessagePic).BeginInit();
             SuspendLayout();
             // 
@@ -132,6 +140,7 @@
             // 
             pnlSide.AutoScroll = true;
             pnlSide.BorderStyle = BorderStyle.FixedSingle;
+            pnlSide.Controls.Add(lblBigName);
             pnlSide.Controls.Add(lblSearchConvo);
             pnlSide.Controls.Add(lblMute);
             pnlSide.Controls.Add(lblProfile);
@@ -145,11 +154,22 @@
             pnlSide.TabIndex = 6;
             pnlSide.Visible = false;
             // 
+            // lblBigName
+            // 
+            lblBigName.Font = new Font("Helvetica Neue", 15F, FontStyle.Bold);
+            lblBigName.Location = new Point(25, 156);
+            lblBigName.Name = "lblBigName";
+            lblBigName.Size = new Size(213, 33);
+            lblBigName.TabIndex = 43;
+            lblBigName.Text = "Shan Michael Raboy";
+            lblBigName.TextAlign = ContentAlignment.MiddleCenter;
+            lblBigName.Visible = false;
+            // 
             // lblSearchConvo
             // 
             lblSearchConvo.AutoSize = true;
             lblSearchConvo.Font = new Font("Helvetica Neue", 10.25F);
-            lblSearchConvo.Location = new Point(174, 210);
+            lblSearchConvo.Location = new Point(174, 237);
             lblSearchConvo.Name = "lblSearchConvo";
             lblSearchConvo.Size = new Size(49, 16);
             lblSearchConvo.TabIndex = 58;
@@ -160,7 +180,7 @@
             // 
             lblMute.AutoSize = true;
             lblMute.Font = new Font("Helvetica Neue", 10.25F);
-            lblMute.Location = new Point(110, 210);
+            lblMute.Location = new Point(110, 237);
             lblMute.Name = "lblMute";
             lblMute.Size = new Size(38, 16);
             lblMute.TabIndex = 57;
@@ -171,7 +191,7 @@
             // 
             lblProfile.AutoSize = true;
             lblProfile.Font = new Font("Helvetica Neue", 10.25F);
-            lblProfile.Location = new Point(38, 210);
+            lblProfile.Location = new Point(38, 237);
             lblProfile.Name = "lblProfile";
             lblProfile.Size = new Size(44, 16);
             lblProfile.TabIndex = 56;
@@ -182,7 +202,7 @@
             // 
             pbSearch.Cursor = Cursors.Hand;
             pbSearch.Image = (Image)resources.GetObject("pbSearch.Image");
-            pbSearch.Location = new Point(179, 170);
+            pbSearch.Location = new Point(179, 197);
             pbSearch.Name = "pbSearch";
             pbSearch.Size = new Size(33, 31);
             pbSearch.SizeMode = PictureBoxSizeMode.Zoom;
@@ -194,7 +214,7 @@
             // 
             pbMute.Cursor = Cursors.Hand;
             pbMute.Image = (Image)resources.GetObject("pbMute.Image");
-            pbMute.Location = new Point(112, 170);
+            pbMute.Location = new Point(112, 197);
             pbMute.Name = "pbMute";
             pbMute.Size = new Size(33, 31);
             pbMute.SizeMode = PictureBoxSizeMode.Zoom;
@@ -240,7 +260,7 @@
             // 
             pbProfile.Cursor = Cursors.Hand;
             pbProfile.Image = (Image)resources.GetObject("pbProfile.Image");
-            pbProfile.Location = new Point(44, 170);
+            pbProfile.Location = new Point(44, 197);
             pbProfile.Name = "pbProfile";
             pbProfile.Size = new Size(33, 31);
             pbProfile.TabIndex = 0;
@@ -622,13 +642,13 @@
             // 
             themeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { darkModeToolStripMenuItem, lightModeToolStripMenuItem });
             themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            themeToolStripMenuItem.Size = new Size(180, 22);
+            themeToolStripMenuItem.Size = new Size(118, 22);
             themeToolStripMenuItem.Text = "Theme";
             // 
             // darkModeToolStripMenuItem
             // 
             darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
-            darkModeToolStripMenuItem.Size = new Size(180, 22);
+            darkModeToolStripMenuItem.Size = new Size(141, 22);
             darkModeToolStripMenuItem.Text = "Dark Mode";
             darkModeToolStripMenuItem.Click += DarkMode;
             // 
@@ -637,7 +657,7 @@
             lightModeToolStripMenuItem.Enabled = false;
             lightModeToolStripMenuItem.Image = Properties.Resources.check_icon;
             lightModeToolStripMenuItem.Name = "lightModeToolStripMenuItem";
-            lightModeToolStripMenuItem.Size = new Size(180, 22);
+            lightModeToolStripMenuItem.Size = new Size(141, 22);
             lightModeToolStripMenuItem.Text = "Light Mode";
             lightModeToolStripMenuItem.Click += LightMode;
             // 
@@ -645,7 +665,7 @@
             // 
             privacyToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { publicToolStripMenuItem, privateToolStripMenuItem });
             privacyToolStripMenuItem.Name = "privacyToolStripMenuItem";
-            privacyToolStripMenuItem.Size = new Size(180, 22);
+            privacyToolStripMenuItem.Size = new Size(118, 22);
             privacyToolStripMenuItem.Text = "Privacy";
             // 
             // publicToolStripMenuItem
@@ -716,7 +736,7 @@
             tbxUserMessage.ForeColor = Color.Black;
             tbxUserMessage.Location = new Point(434, 583);
             tbxUserMessage.Name = "tbxUserMessage";
-            tbxUserMessage.Size = new Size(388, 17);
+            tbxUserMessage.Size = new Size(378, 17);
             tbxUserMessage.TabIndex = 46;
             tbxUserMessage.Visible = false;
             tbxUserMessage.Click += lblMessage;
@@ -782,25 +802,13 @@
             // 
             pbPlus.Cursor = Cursors.Hand;
             pbPlus.Image = (Image)resources.GetObject("pbPlus.Image");
-            pbPlus.Location = new Point(298, 580);
+            pbPlus.Location = new Point(298, 581);
             pbPlus.Name = "pbPlus";
             pbPlus.Size = new Size(22, 21);
             pbPlus.SizeMode = PictureBoxSizeMode.StretchImage;
             pbPlus.TabIndex = 50;
             pbPlus.TabStop = false;
             pbPlus.Visible = false;
-            // 
-            // pbLike
-            // 
-            pbLike.Cursor = Cursors.Hand;
-            pbLike.Image = Properties.Resources.like__1_;
-            pbLike.Location = new Point(849, 579);
-            pbLike.Name = "pbLike";
-            pbLike.Size = new Size(26, 24);
-            pbLike.TabIndex = 51;
-            pbLike.TabStop = false;
-            pbLike.Visible = false;
-            pbLike.Click += btnSendMessage_Click;
             // 
             // flipChatMessage
             // 
@@ -851,14 +859,31 @@
             // pnlMessage
             // 
             pnlMessage.BackColor = SystemColors.Control;
+            pnlMessage.Controls.Add(pbLike);
             pnlMessage.Location = new Point(282, 565);
             pnlMessage.Name = "pnlMessage";
             pnlMessage.Size = new Size(613, 100);
             pnlMessage.TabIndex = 54;
             // 
+            // pbLike
+            // 
+            pbLike.Cursor = Cursors.Hand;
+            pbLike.Image = Properties.Resources.like__1_;
+            pbLike.Location = new Point(563, 10);
+            pbLike.Name = "pbLike";
+            pbLike.Size = new Size(34, 34);
+            pbLike.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbLike.TabIndex = 0;
+            pbLike.TabStop = false;
+            pbLike.Visible = false;
+            pbLike.Click += btnSendMessage_Click;
+            // 
             // pnlBackground
             // 
             pnlBackground.BackColor = SystemColors.Control;
+            pnlBackground.Controls.Add(pbInfo);
+            pnlBackground.Controls.Add(pbVid);
+            pnlBackground.Controls.Add(pbCall);
             pnlBackground.Controls.Add(lblNewName);
             pnlBackground.Controls.Add(pbMessagePic);
             pnlBackground.Dock = DockStyle.Fill;
@@ -866,6 +891,42 @@
             pnlBackground.Name = "pnlBackground";
             pnlBackground.Size = new Size(1148, 639);
             pnlBackground.TabIndex = 0;
+            // 
+            // pbInfo
+            // 
+            pbInfo.Cursor = Cursors.Hand;
+            pbInfo.Image = (Image)resources.GetObject("pbInfo.Image");
+            pbInfo.Location = new Point(838, 55);
+            pbInfo.Name = "pbInfo";
+            pbInfo.Size = new Size(33, 31);
+            pbInfo.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbInfo.TabIndex = 59;
+            pbInfo.TabStop = false;
+            pbInfo.Visible = false;
+            // 
+            // pbVid
+            // 
+            pbVid.Cursor = Cursors.Hand;
+            pbVid.Image = (Image)resources.GetObject("pbVid.Image");
+            pbVid.Location = new Point(785, 55);
+            pbVid.Name = "pbVid";
+            pbVid.Size = new Size(44, 32);
+            pbVid.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbVid.TabIndex = 59;
+            pbVid.TabStop = false;
+            pbVid.Visible = false;
+            // 
+            // pbCall
+            // 
+            pbCall.Cursor = Cursors.Hand;
+            pbCall.Image = (Image)resources.GetObject("pbCall.Image");
+            pbCall.Location = new Point(744, 55);
+            pbCall.Name = "pbCall";
+            pbCall.Size = new Size(33, 31);
+            pbCall.SizeMode = PictureBoxSizeMode.CenterImage;
+            pbCall.TabIndex = 59;
+            pbCall.TabStop = false;
+            pbCall.Visible = false;
             // 
             // lblNewName
             // 
@@ -897,17 +958,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1148, 639);
             ContextMenuStrip = contextForm2;
+            Controls.Add(label3);
             Controls.Add(lblUserMessage);
             Controls.Add(menuStrip1);
             Controls.Add(panel1);
             Controls.Add(pnlSide);
             Controls.Add(flipChatMessage);
-            Controls.Add(pbLike);
             Controls.Add(pbPlus);
             Controls.Add(pbImages);
             Controls.Add(pbSticker);
             Controls.Add(pbGIF);
-            Controls.Add(label3);
             Controls.Add(tbxUserMessage);
             Controls.Add(richTextBoxEdit2);
             Controls.Add(panel2);
@@ -947,10 +1007,14 @@
             ((System.ComponentModel.ISupportInitialize)pbSticker).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbImages).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbPlus).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbLike).EndInit();
             contextMenuStrip1.ResumeLayout(false);
+            pnlMessage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbLike).EndInit();
             pnlBackground.ResumeLayout(false);
             pnlBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbInfo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbVid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbCall).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbMessagePic).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -1008,7 +1072,6 @@
         private PictureBox pbGIF;
         private PictureBox pbImages;
         private PictureBox pbPlus;
-        private PictureBox pbLike;
         private FlowLayoutPanel flipChatMessage;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem viewToolStripMenuItem;
@@ -1034,6 +1097,11 @@
         private PictureBox pbMessagePic;
         private Label lblNewName;
         private ToolStripMenuItem viewProfileToolStripMenuItem;
+        public Label lblBigName;
+        private PictureBox pbCall;
+        private PictureBox pbInfo;
+        private PictureBox pbVid;
+        private PictureBox pbLike;
         //private ContextMenuStrip contextForms2;
     }
 }
