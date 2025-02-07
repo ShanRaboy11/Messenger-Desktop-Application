@@ -358,6 +358,7 @@
             tbxPassword.TabIndex = 40;
             tbxPassword.UseSystemPasswordChar = true;
             tbxPassword.Click += loginPass;
+            tbxPassword.KeyDown += tbxPassword_KeyDown;
             // 
             // contextShortcut
             // 
@@ -470,7 +471,7 @@
             tbxUsername.Name = "tbxUsername";
             tbxUsername.Size = new Size(306, 17);
             tbxUsername.TabIndex = 43;
-            tbxUsername.Click += this.loginUser;
+            tbxUsername.Click += loginUser;
             // 
             // Form1
             // 

@@ -189,6 +189,7 @@
             lblFirst.Size = new Size(78, 17);
             lblFirst.TabIndex = 40;
             lblFirst.Text = "First Name";
+            lblFirst.Click += userFirstName;
             // 
             // userCFirstName
             // 
@@ -226,6 +227,7 @@
             userCLastName.Name = "userCLastName";
             userCLastName.Size = new Size(182, 17);
             userCLastName.TabIndex = 44;
+            userCLastName.Click += userLastName;
             // 
             // lblPass
             // 
@@ -239,6 +241,7 @@
             lblPass.Size = new Size(106, 17);
             lblPass.TabIndex = 47;
             lblPass.Text = "New password";
+            lblPass.Click += userPass;
             // 
             // userCPassword
             // 
@@ -251,6 +254,7 @@
             userCPassword.Size = new Size(478, 17);
             userCPassword.TabIndex = 50;
             userCPassword.UseSystemPasswordChar = true;
+            userCPassword.Click += userPass;
             userCPassword.Leave += userPass;
             // 
             // lblEmail
@@ -265,6 +269,7 @@
             lblEmail.Size = new Size(160, 17);
             lblEmail.TabIndex = 46;
             lblEmail.Text = "Mobile number or email";
+            lblEmail.Click += userEmail;
             // 
             // userCEmail
             // 

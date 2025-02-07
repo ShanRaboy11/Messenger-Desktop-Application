@@ -16,12 +16,12 @@ namespace Messenger_Desktop_Application
     public partial class Form2 : Form
     {
         List<string> foundUser = new List<string>();
-        private string currentUser;
+        private string currentUser, gender, receiver, privacy, searchedEmail;
 
         public Form2(string username)
         {
             InitializeComponent();
-            currentUser = username; // Assign the logged-in user
+            currentUser = username;
             LoadMessages(currentUser, null);
         }
 
@@ -35,25 +35,6 @@ namespace Messenger_Desktop_Application
             {
                 ReleaseCapture();
                 SendMessage(Handle, 0xA1, 0x2, 0);
-            }
-        }
-
-        private const int WM_NCHITTEST = 0x84;
-        private const int HTBOTTOMRIGHT = 17;
-
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-            if (m.Msg == WM_NCHITTEST)
-            {
-                // Get mouse position
-                Point cursor = PointToClient(Cursor.Position);
-                int gripSize = 10; // Resize corner sensitivity
-
-                if (cursor.X >= this.ClientSize.Width - gripSize && cursor.Y >= this.ClientSize.Height - gripSize)
-                {
-                    m.Result = (IntPtr)HTBOTTOMRIGHT; // Resize from bottom-right corner
-                }
             }
         }
 
@@ -94,7 +75,8 @@ namespace Messenger_Desktop_Application
             if (userInfo != null)
             {
                 lblFullName.Text = userInfo[0] + " " + userInfo[1];
-                string gender = userInfo[2];
+                receiver = lblFullName.Text;
+                gender = userInfo[2];
 
                 if (gender == "Male")
                 {
@@ -132,7 +114,8 @@ namespace Messenger_Desktop_Application
                     {
                         string firstName = data[0].Trim();
                         string lastName = data[1].Trim();
-                        string gender = data[7].Trim();
+                        searchedEmail = data[2].Trim();
+                        gender = data[7].Trim();
 
                         // Check if input matches username, first name, or last name
                         if (firstName.ToLower() == input.ToLower() || lastName.ToLower() == input.ToLower())
@@ -164,7 +147,7 @@ namespace Messenger_Desktop_Application
 
                 lblUserMessage.Text = foundUser[0] + " " + foundUser[1];
 
-                string gender = foundUser[2];
+                gender = foundUser[2];
                 if (gender == "Male")
                 {
                     pbMessagePic.Image = Resources.male_profilepicture;
@@ -368,40 +351,6 @@ namespace Messenger_Desktop_Application
             }
         }
 
-        private string GetUsernameFromFullName(string fullName)
-        {
-            string filePath = AppContext.BaseDirectory + "Accounts.txt";
-
-            using (StreamReader sr = new StreamReader(filePath))
-            {
-                string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    string[] data = line.Split(',');
-                    if (data.Length >= 6) // Ensure sufficient data fields
-                    {
-                        string firstName = data[0].Trim();
-                        string lastName = data[1].Trim();
-                        string username = data[2].Trim(); // Assuming username is at index 2
-
-                        if ($"{firstName} {lastName}".ToLower() == fullName.ToLower())
-                        {
-                            return username; // Return the correct username
-                        }
-                    }
-                }
-            }
-            return fullName; // Fallback if username not found
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-
-        private Form2 _form2Instance; // Keep a reference to Form2
-
         private void DarkMode(object sender, EventArgs e)
         {
             panel2.BackColor = Color.Black;
@@ -418,16 +367,37 @@ namespace Messenger_Desktop_Application
             lblSearchConvo.ForeColor = Color.White;
             lblUserMessage.Visible = false;
             lblNewName.Visible = true;
+            lblNewName.Text = receiver;
             pictureBox1.Image = Resources.white_note1;
             pictureBox2.Image = Resources.white_threedots;
-            pbBiggerPhoto.Image = Resources.big_male;
-            pbMessagePic.Image = Resources.small_male;
-            pbProfilePic.Image = Resources.small_male;
             pbMute.Image = Resources.white_bell;
             pbSearch.Image = Resources.white_big_search;
             pbProfile.Image = Resources.white_profile;
             pictureBox3.Image = Resources.white_small_search;
             separator1.Visible = false;
+
+            if (gender == "Male")
+            {
+                pbBiggerPhoto.Image = Resources.big_male;
+                pbMessagePic.Image = Resources.small_male;
+                pbProfilePic.Image = Resources.small_male;
+            }
+            else if (gender == "Female")
+            {
+                pbBiggerPhoto.Image = Resources.white_female_big;
+                pbMessagePic.Image = Resources.white_female_small;
+                pbProfilePic.Image = Resources.white_female_small;
+            }
+            else
+            {
+                pbBiggerPhoto.Image = Resources.white_profile;
+                pbMessagePic.Image = Resources.white_profile;
+                pbProfilePic.Image = Resources.white_profile;
+            }
+            darkModeToolStripMenuItem.Image = Resources.check_icon;
+            darkModeToolStripMenuItem.Enabled = false;
+            lightModeToolStripMenuItem.Image = null;
+            lightModeToolStripMenuItem.Enabled = true;
         }
 
         private void LightMode(object sender, EventArgs e)
@@ -449,21 +419,114 @@ namespace Messenger_Desktop_Application
             pictureBox1.Image = Resources.notes;
             pictureBox2.Image = Resources.dots;
             pnlMessage.BackColor = Color.White;
-            pbBiggerPhoto.Image = Resources.bigmale_profile;
-            pbMessagePic.Image = Resources.male_profilepicture;
-            pbProfilePic.Image = Resources.male_profilepicture;
             pbMute.Image = Resources.black_bell;
             pbSearch.Image = Resources.black_search;
             pbProfile.Image = Resources.profile_black;
             pictureBox3.Image = Resources.black_search;
             separator1.Visible = true;
+
+            if (gender == "Male")
+            {
+                pbBiggerPhoto.Image = Resources.bigmale_profile;
+                pbMessagePic.Image = Resources.male_profilepicture;
+                pbProfilePic.Image = Resources.male_profilepicture;
+            }
+            else if (gender == "Female")
+            {
+                pbMessagePic.Image = Resources.female_profilepicture;
+                pbBiggerPhoto.Image = Resources.bigfemale_profile;
+                pbProfilePic.Image = Resources.female_profilepicture;
+            }
+            else
+            {
+                pbBiggerPhoto.Image = Resources.biguser_profile;
+                pbMessagePic.Image = Resources.notsay_profilepicture;
+                pbProfilePic.Image = Resources.notsay_profilepicture;
+            }
+            darkModeToolStripMenuItem.Image = Resources.check_icon;
+            lightModeToolStripMenuItem.Enabled = false;
+            darkModeToolStripMenuItem.Image = null;
+            darkModeToolStripMenuItem.Enabled = true;
         }
 
         private void ViewProfile(object sender, EventArgs e)
         {
-            Form4 profile = new Form4();
+            Form4 profile = new Form4(currentUser);
 
             profile.Show();
+        }
+
+        private void SetToPublic(object sender, EventArgs e)
+        {
+            UpdatePrivacyStatus(currentUser, "Public");
+            publicToolStripMenuItem.Image = Resources.check_icon;
+            publicToolStripMenuItem.Enabled = false;
+            privateToolStripMenuItem.Image = null;
+            privateToolStripMenuItem.Enabled = true;
+        }
+
+        private void SetToPrivate(object sender, EventArgs e)
+        {
+            UpdatePrivacyStatus(currentUser, "Private");
+            publicToolStripMenuItem.Image = null;
+            publicToolStripMenuItem.Enabled = true;
+            privateToolStripMenuItem.Image = Resources.check_icon;
+            privateToolStripMenuItem.Enabled = false;
+        }
+
+        private void UpdatePrivacyStatus(string userEmail, string newPrivacy)
+        {
+            string filePath = Path.Combine(AppContext.BaseDirectory, "Accounts.txt");
+
+            List<string> lines = new List<string>();
+            bool userFound = false;
+
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] data = line.Split(',');
+
+                    if (data.Length >= 9)
+                    {
+                        string email = data[2].Trim();
+
+                        if (email.Equals(userEmail, StringComparison.OrdinalIgnoreCase))
+                        {
+                            data[8] = newPrivacy;
+                            userFound = true;
+                        }
+                    }
+
+                    lines.Add(string.Join(",", data));
+                }
+            }
+
+            if (userFound)
+            {
+                File.WriteAllLines(filePath, lines);
+                MessageBox.Show($"Your account is now set to {newPrivacy}!", "Privacy Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("User not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void viewUserProfile(object sender, EventArgs e)
+        {
+            Form4 profile = new Form4(searchedEmail);
+            profile.Show();
+        }
+
+        private void tbxSUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Prevents the default "ding" sound
+                searchUser(this, EventArgs.Empty); // Simulate clicking the Send button
+            }
         }
     }
 }
