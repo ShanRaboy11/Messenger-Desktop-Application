@@ -1,1 +1,1 @@
-Messenger is a C# desktop application designed for real-time communication. It enables users to send and receive messages efficiently with an intuitive and user-friendly interface. This is just an intermediate-level project created for learning and development purposes.
+**Messenger** is a C# desktop application designed for real-time communication. It enables users to send and receive messages efficiently with an intuitive and user-friendly interface. This is just an intermediate-level project created for learning and development purposes.
