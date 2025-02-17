@@ -1,0 +1,1 @@
+Messenger C# Desktop Application is a C# desktop application designed for real-time communication. It enables users to send and receive messages efficiently with an intuitive and user-friendly interface.
